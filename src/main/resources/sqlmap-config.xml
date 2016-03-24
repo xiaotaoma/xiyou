@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings
+		cacheModelsEnabled="true"
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true"
+		errorTracingEnabled="true"
+		maxRequests="256"
+		maxSessions="64"
+		maxTransactions="24"
+		useStatementNamespaces="true" />
+		
+		<sqlMap resource="com/model/account.xml"/>
+		<sqlMap resource="com/model/hero.xml"/>
+		<sqlMap resource="com/model/arena.xml"/>
+		<sqlMap resource="com/model/friend.xml"/>
+		<sqlMap resource="com/model/announcement.xml"/>
+		<sqlMap resource="com/model/report.xml"/>
+		<sqlMap resource="com/model/leaveMessage.xml"/>
+		<sqlMap resource="com/model/bag.xml"/>
+		
+		<sqlMap resource="com/model/backstage/back_onlineNum.xml"/>
+		<sqlMap resource="com/model/backstage/back_record.xml"/>
+		<sqlMap resource="com/model/backstage/back_recharge.xml"/>
+		<sqlMap resource="com/model/backstage/back_login.xml"/>
+		<sqlMap resource="com/model/backstage/back_register.xml"/>
+		<sqlMap resource="com/model/backstage/back_temporaryData.xml"/>
+		<sqlMap resource="com/model/backstage/back_pay_message.xml"/>
+		<sqlMap resource="com/model/backstage/back_tool.xml"/>
+		
+		<sqlMap resource="com/model/backstage/back_paytaiwan.xml"/>
+		<sqlMap resource="com/model/backstage/back_payyidong.xml"/>
+		<sqlMap resource="com/model/backstage/back_pay_dianxin.xml"/>
+		<sqlMap resource="com/model/backstage/back_pay91.xml"/>
+		<sqlMap resource="com/model/backstage/back_money.xml"/>
+		
+</sqlMapConfig>

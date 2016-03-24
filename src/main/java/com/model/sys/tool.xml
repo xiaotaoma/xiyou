@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tool>
+	<row>
+		<toolId>15900</toolId>
+		<name>三千年蟠桃</name>
+		<sortId>100</sortId>
+		<desc>(0,0,0)三千年一熟，人吃了成仙得道
+在蟠桃會中，下仙享用的仙果
+【|(0,0,0)功效|(0,0,0)】+1500 經驗</desc>
+		<effectType>2</effectType>
+		<effect>1500</effect>
+		<overlap>1</overlap>
+		<overlapNum>20</overlapNum>
+		<useQuery>0</useQuery>
+	</row>
+	<row>
+		<toolId>15901</toolId>
+		<name>九千年蟠桃</name>
+		<sortId>200</sortId>
+		<desc>(0,0,0)九千年一熟，吃了與天地齊壽日月同庚
+在蟠桃會中，上仙才能享用的極品仙果
+【|(0,0,0)功效|(0,0,0)】+15000 經驗</desc>
+		<effectType>2</effectType>
+		<effect>15000</effect>
+		<overlap>1</overlap>
+		<overlapNum>20</overlapNum>
+		<useQuery>0</useQuery>
+	</row>
+	<row>
+		<toolId>15902</toolId>
+		<name>競技場權杖</name>
+		<sortId>300</sortId>
+		<desc>(0,0,0)競技場 權杖
+【|(0,0,0)使用|(0,0,0)】+1 挑戰次數</desc>
+		<effectType>3</effectType>
+		<effect>1</effect>
+		<overlap>1</overlap>
+		<overlapNum>20</overlapNum>
+		<useQuery>0</useQuery>
+	</row>
+	<row>
+		<toolId>15903</toolId>
+		<name>大鬧天宮權杖</name>
+		<sortId>400</sortId>
+		<desc>(0,0,0)大鬧天宮 權杖
+【|(0,0,0)使用|(0,0,0)】+1 挑戰次數</desc>
+		<effectType>4</effectType>
+		<effect>1</effect>
+		<overlap>1</overlap>
+		<overlapNum>20</overlapNum>
+		<useQuery>0</useQuery>
+	</row>
+	<row>
+		<toolId>15904</toolId>
+		<name>普通修煉丹</name>
+		<sortId>500</sortId>
+		<desc>(0,0,0)普通修煉丹
+使用後，2個小時後可提取經驗
+【|(0,0,0)提取|(0,0,0)】+5000 經驗</desc>
+		<effectType>5</effectType>
+		<effect>120_5000</effect>
+		<overlap>1</overlap>
+		<overlapNum>20</overlapNum>
+		<useQuery>0</useQuery>
+	</row>
+	<row>
+		<toolId>15905</toolId>
+		<name>高級修煉丹</name>
+		<sortId>600</sortId>
+		<desc>(0,0,0)高級修煉丹
+使用後，8個小時後可提取經驗
+【|(0,0,0)提取|(0,0,0)】+20000 經驗</desc>
+		<effectType>5</effectType>
+		<effect>480_20000</effect>
+		<overlap>1</overlap>
+		<overlapNum>20</overlapNum>
+		<useQuery>0</useQuery>
+	</row>
+	<row>
+		<toolId>16000</toolId>
+		<name>新手禮包</name>
+		<sortId>700</sortId>
+		<desc>(0,0,0)新手禮包
+【|(0,0,0)使用效果|(0,0,0)】獲得 1 顆三千年蟠桃、5000銅幣</desc>
+		<effectType>1</effectType>
+		<effect>3_15900_1,2_0_5000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>0</useQuery>
+	</row>
+	<row>
+		<toolId>16001</toolId>
+		<name>8波禮包</name>
+		<sortId>800</sortId>
+		<desc>(0,0,0)競技場禮包
+【|(255,0,0)觸發條件|(0,0,0)】競技場 順利通過第8波
+【|(0,0,0)使用效果|(0,0,0)】獲得 1 個普通修煉丹、10000銅幣</desc>
+		<effectType>1</effectType>
+		<effect>3_15904_1,2_0_10000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>1_8</useQuery>
+	</row>
+	<row>
+		<toolId>16002</toolId>
+		<name>15波禮包</name>
+		<sortId>900</sortId>
+		<desc>(0,0,0)【|(255,0,0)觸發條件|(0,0,0)】競技場 順利通過第15波
+【|(0,0,0)使用效果|(0,0,0)】獲得 1 顆三千年蟠桃
+                 1 個普通修煉丹、20000銅幣</desc>
+		<effectType>1</effectType>
+		<effect>3_15900_1,3_15904_1,2_0_20000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>1_15</useQuery>
+	</row>
+	<row>
+		<toolId>16003</toolId>
+		<name>30波禮包</name>
+		<sortId>1000</sortId>
+		<desc>(0,0,0)【|(255,0,0)觸發條件|(0,0,0)】競技場順利通過第30波
+【|(0,0,0)使用效果|(0,0,0)】獲得 3 顆三千年蟠桃
+                 1 個普通修煉丹、30000銅幣</desc>
+		<effectType>1</effectType>
+		<effect>3_15900_3,3_15904_1,2_0_30000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>1_30</useQuery>
+	</row>
+	<row>
+		<toolId>16004</toolId>
+		<name>50波禮包</name>
+		<sortId>1100</sortId>
+		<desc>(0,0,0)【|(255,0,0)觸發條件|(0,0,0)】競技場順利通過第50波
+【|(0,0,0)使用效果|(0,0,0)】獲得 1 個高級修煉丹
+                 3 顆三千年蟠桃、50000銅幣</desc>
+		<effectType>1</effectType>
+		<effect>3_15905_1,3_15900_3,2_0_50000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>1_50</useQuery>
+	</row>
+	<row>
+		<toolId>16005</toolId>
+		<name>70波禮包</name>
+		<sortId>1200</sortId>
+		<desc>(0,0,0)【|(255,0,0)觸發條件|(0,0,0)】競技場順利通過第70波
+【|(0,0,0)使用效果|(0,0,0)】獲得 1 顆九千年蟠桃
+                 3 顆三千年蟠桃、100000銅幣</desc>
+		<effectType>1</effectType>
+		<effect>3_15901_1,3_15900_3,2_0_100000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>1_70</useQuery>
+	</row>
+	<row>
+		<toolId>16006</toolId>
+		<name>80波禮包</name>
+		<sortId>1300</sortId>
+		<desc>(0,0,0)【|(255,0,0)觸發條件|(0,0,0)】競技場順利通過第80波
+【|(0,0,0)使用效果|(0,0,0)】獲得 1 顆九千年蟠桃
+                 2 個高級修煉丹、300000銅幣</desc>
+		<effectType>1</effectType>
+		<effect>3_15901_1,3_15905_2,2_0_300000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>1_80</useQuery>
+	</row>
+	<row>
+		<toolId>16007</toolId>
+		<name>90波禮包</name>
+		<sortId>1400</sortId>
+		<desc>(0,0,0)【|(255,0,0)觸發條件|(0,0,0)】競技場順利通過第90波
+【|(0,0,0)使用效果|(0,0,0)】獲得 1 顆九千年蟠桃
+                 3 個高級修煉丹、500000銅幣</desc>
+		<effectType>1</effectType>
+		<effect>3_15901_1,3_15905_3,2_0_500000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>1_90</useQuery>
+	</row>
+	<row>
+		<toolId>16008</toolId>
+		<name>100波禮包</name>
+		<sortId>1500</sortId>
+		<desc>(0,0,0)【|(255,0,0)觸發條件|(0,0,0)】競技場順利通過第100波
+【|(0,0,0)使用效果|(0,0,0)】獲得 3 顆九千年蟠桃
+                 3 個高級修煉丹、1000000銅幣</desc>
+		<effectType>1</effectType>
+		<effect>3_15901_3,3_15905_3,2_0_1000000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>1_100</useQuery>
+	</row>
+	<row>
+		<toolId>16009</toolId>
+		<name>禮包</name>
+		<sortId>1600</sortId>
+		<desc>(0,0,0)【|(255,0,0)觸發條件|(0,0,0)】競技場順利通過第100波
+【|(0,0,0)使用效果|(0,0,0)】獲得 3 顆九千年蟠桃
+                 3 個高級修煉丹、1000000銅幣</desc>
+		<effectType>1</effectType>
+		<effect>3_15901_3,3_15905_3,2_0_1000000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>0</useQuery>
+	</row>
+	<row>
+		<toolId>16010</toolId>
+		<name>包月VIP</name>
+		<sortId>1700</sortId>
+		<desc>每日上線可領取元寶x50
+持續時間：30天
+最多可獲得元寶x1500</desc>
+		<effectType>6</effectType>
+		<effect>30</effect>
+		<overlap>1</overlap>
+		<overlapNum>20</overlapNum>
+		<useQuery>0</useQuery>
+	</row>
+	<row>
+		<toolId>16011</toolId>
+		<name>FB禮包</name>
+		<sortId>99</sortId>
+		<desc>FB專屬禮包
+獲得元寶x30
+獲得銅幣x10000</desc>
+		<effectType>1</effectType>
+		<effect>1_0_30,2_0_10000</effect>
+		<overlap>0</overlap>
+		<overlapNum>0</overlapNum>
+		<useQuery>0</useQuery>
+	</row>
+</tool>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Account">
+	<typeAlias alias="Account" type="com.model.Account"/>
+	<insert id="insertAccount" parameterClass="Account">
+		insert into account (account,registerTime,createIp,terrace) values (#account#,#registerTime#,#createIp#,#terrace#)
+		<selectKey	resultClass="int" keyProperty="id">
+			select last_insert_id() as ID from account limit 1
+		</selectKey>
+	</insert>
+	
+	<select id="getByAccount" parameterClass="java.lang.String" resultClass="Account">
+		select * from account where account = #value#
+	</select>
+	
+	<update id="update" parameterClass="Account">
+		update account set account=#account#,registerTime=#registerTime#,createIp=#createIp#,terrace=#terrace# where id = #id#
+	</update>
+</sqlMap>

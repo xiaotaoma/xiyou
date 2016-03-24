@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Back_tool">
+	<typeAlias alias="Back_tool" type="com.model.backstage.Back_tool"/>
+	<insert id="insert" parameterClass="Back_tool">
+		insert into back_tool (time,type,reason,toolId,hasNum,leftNum,num,hid) 
+		values(#time#,#type#,#reason#,#toolId#,#hasNum#,#leftNum#,#num#,#hid#);
+	</insert>
+</sqlMap>

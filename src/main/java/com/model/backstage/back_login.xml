@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Back_login">
+	<typeAlias alias="Back_login" type="com.model.backstage.Back_login"/>
+	<insert id="insert" parameterClass="Back_login">
+		insert into back_login (hid,times,totalTime,time) values (#hid#,#times#,#totalTime#,#time#)
+	</insert>
+	
+	<select id="getByHid" parameterClass="java.util.HashMap" resultClass="Back_login">
+		select * from back_login where hid=#hid# and time=#time#
+	</select>
+	
+	<update id="updateTimes" parameterClass="Back_login">
+		update back_login set times=#times# where id=#id#
+	</update>
+	
+	<update id="updateTatolTime" parameterClass="Back_login">
+		update back_login set totalTime=#totalTime# where id=#id#
+	</update>
+</sqlMap>

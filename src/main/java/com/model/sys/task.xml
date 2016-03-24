@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<task>
+	<row>
+		<id>15000</id>
+		<name>強化裝備</name>
+		<loop>1</loop>
+		<desc>強化裝備
+任意強化裝備5次
+進度：0/5</desc>
+		<awardDesc>銅幣x3000</awardDesc>
+		<award>0_0_3000</award>
+	</row>
+	<row>
+		<id>15001</id>
+		<name>小試牛刀</name>
+		<loop>1</loop>
+		<desc>小試牛刀
+任意挑戰一次競技場
+進度：0/1</desc>
+		<awardDesc>銅幣x1000</awardDesc>
+		<award>0_0_1000</award>
+	</row>
+	<row>
+		<id>15002</id>
+		<name>百戰百勝</name>
+		<loop>1</loop>
+		<desc>百戰百勝
+在競技場擊敗10名玩家
+進度：0/10</desc>
+		<awardDesc>銅幣x5000
+元寶x10
+普通修煉丹x3</awardDesc>
+		<award>0_0_5000,1_0_10,2_15904_3</award>
+	</row>
+	<row>
+		<id>15003</id>
+		<name>光顧商城</name>
+		<loop>1</loop>
+		<desc>光顧商城
+任意成功購買一次道具
+進度: 0/1</desc>
+		<awardDesc>銅幣x5000
+普通修煉丹x1
+三千年蟠桃x1</awardDesc>
+		<award>0_0_5000,2_15904_1,2_15900_1</award>
+	</row>
+	<row>
+		<id>15004</id>
+		<name>碩果累累</name>
+		<loop>1</loop>
+		<desc>碩果累累
+每日完成搖錢樹2次
+進度：0/2</desc>
+		<awardDesc>元寶x10
+三千年蟠桃x1</awardDesc>
+		<award>1_0_10,2_15900_1</award>
+	</row>
+	<row>
+		<id>15005</id>
+		<name>開服越送越多</name>
+		<loop>0</loop>
+		<desc>開服越送越多
+還可領取15天
+進度：0/1</desc>
+	</row>
+</task>

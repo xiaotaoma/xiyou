@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Back_pay_message">
+	<typeAlias alias="Back_pay_message" type="com.model.backstage.Back_pay_message"/>
+	<insert id="insert" parameterClass="Back_pay_message">
+		insert into back_pay_message (account,time,hid,terrace,zoneid,original_transaction_id,bvrs,
+		transaction_id,quantity,purchase_date,product_id,original_purchase_date,bid,purchase_date_pst,
+		original_purchase_date_ms,original_purchase_date_pst,purchase_date_ms,unique_identifier,
+		unique_vendor_identifier,item_id,orderId,`order`,isdone,giveTime,productId) 
+		values(#account#,#time#,#hid#,#terrace#,#zoneid#,#original_transaction_id#,#bvrs#,
+		#transaction_id#,#quantity#,#purchase_date#,#product_id#,#original_purchase_date#,#bid#,#purchase_date_pst#,
+		#original_purchase_date_ms#,#original_purchase_date_pst#,#purchase_date_ms#,#unique_identifier#,
+		#unique_vendor_identifier#,#item_id#,#orderId#,#order#,#isdone#,#giveTime#,#productId#)
+	</insert>
+	
+	<update id="update" parameterClass="Back_pay_message">
+		update back_pay_message set account=#account#,time=#time#,hid=#hid#,terrace=#terrace#,zoneid=#zoneid#
+		,original_transaction_id=#original_transaction_id#,bvrs=#bvrs#,
+		transaction_id=#transaction_id#,quantity=#quantity#,purchase_date=#purchase_date#,product_id=#product_id#,
+		original_purchase_date=#original_purchase_date#,bid=#bid#,purchase_date_pst=#purchase_date_pst#,
+		original_purchase_date_ms=#original_purchase_date_ms#,original_purchase_date_pst=#original_purchase_date_pst#,
+		purchase_date_ms=#purchase_date_ms#,unique_identifier=#unique_identifier#,
+		unique_vendor_identifier=#unique_vendor_identifier#,item_id=#item_id#,orderId=#orderId#,order=#order# where id=#id#
+	</update>
+	
+	<update id="updateDone" parameterClass="java.util.HashMap">
+		update back_pay_message set isdone=#isdone#,giveTime=#giveTime# where orderId = #orderId#
+	</update>
+	
+	<select id="selectUndoneDeal" parameterClass="int" resultClass="Back_pay_message">
+		select id,hid,orderId,isdone,product_id from back_pay_message where hid=#hid# and isdone=0
+	</select>
+	
+	<select id="getByOrderId" parameterClass="java.lang.String" resultClass="Back_pay_message">
+		select id,hid,orderId,isdone,product_id from back_pay_message where orderId = #value#
+	</select>
+</sqlMap>

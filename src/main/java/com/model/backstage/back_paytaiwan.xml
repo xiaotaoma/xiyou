@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Back_paytaiwan">
+	<typeAlias alias="Back_paytaiwan" type="com.model.backstage.Back_paytaiwan"/>
+	<insert id="insert" parameterClass="Back_paytaiwan">
+		insert into back_paytaiwan (account,hid,time,amount,offer,system_account,user_id,orderId,money)
+		values(#account#,#hid#,#time#,#amount#,#offer#,#system_account#,#user_id#,#orderId#,#money#)
+	</insert>
+	
+</sqlMap>

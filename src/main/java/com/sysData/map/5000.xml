@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="12" height="8" tilewidth="80" tileheight="80">
+ <tileset firstgid="1" name="5000" tilewidth="80" tileheight="80">
+  <image source="map.jpg" width="960" height="640"/>
+ </tileset>
+ <layer name="块层 1" width="12" height="8">
+  <data encoding="base64" compression="zlib">
+   eJwNw4c2QgEAANCHjMjIlkjLStmVWWTPSiH7/7/CvefcriAIuu0xZK999jtg2EGHjDjsiKOOGXXcCSedctoZZ50z5rxxF1w04ZJJU6bNmHXZFVddc92cG+YtuOmW2+646577Fi1Z9sBDjzz2xFMrVj3z3JoXXnrltTfeeue9Dz765LN1GzZ9sWXbV998t+OHn3757Y+//vkPSocSMQ==
+  </data>
+ </layer>
+ <objectgroup name="object" width="12" height="8">
+  <properties>
+   <property name="anim" value="5000_1_000|4,5000_2_000|4,5000_3_000|4,"/>
+   <property name="zhedangwu" value="5000_1_|1,5000_2_|1,5000_3_|1"/>
+  </properties>
+  <object name="obstacle" x="0" y="0" width="160" height="80"/>
+  <object name="obstacle" x="240" y="0" width="720" height="80"/>
+  <object name="obstacle" x="800" y="80" width="160" height="80"/>
+  <object name="obstacle" x="880" y="160" width="80" height="480"/>
+  <object name="obstacle" x="0" y="560" width="880" height="80"/>
+  <object name="obstacle" x="160" y="320" width="80" height="80"/>
+  <object name="obstacle" x="0" y="80" width="80" height="480"/>
+  <object name="obstacle" x="80" y="80" width="80" height="80"/>
+  <object name="obstacle" x="240" y="80" width="80" height="80"/>
+  <object name="obstacle" x="480" y="400" width="160" height="80"/>
+  <object name="obstacle" x="560" y="480" width="80" height="80"/>
+  <object name="enemy" x="160" y="-80" width="80" height="80">
+   <properties>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="road" x="160" y="0" width="80" height="80">
+   <properties>
+    <property name="dir" value="2"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="road" x="160" y="80" width="80" height="80">
+   <properties>
+    <property name="dir" value="2"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="road" x="160" y="160" width="80" height="80">
+   <properties>
+    <property name="dir" value="2"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="hero" x="160" y="240" width="80" height="80">
+   <properties>
+    <property name="dir" value="1"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="obstacle" x="80" y="480" width="80" height="80"/>
+ </objectgroup>
+ <objectgroup name="bornplace" width="12" height="8">
+  <object name="bornplace" x="160" y="240" width="80" height="80"/>
+  <object name="bornplace" x="640" y="240" width="80" height="80"/>
+ </objectgroup>
+</map>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="14" tilewidth="80" tileheight="80">
+ <tileset firstgid="1" name="5018" tilewidth="80" tileheight="80">
+  <image source="5018.jpg" width="1600" height="1120"/>
+ </tileset>
+ <layer name="块层 1" width="20" height="14">
+  <data encoding="base64" compression="zlib">
+   eJwNwwVwEAQAAMAFsI1Yj1a6UzpEuhuku0NQUkS6GyWU7pZQuruRTikDUFpFQhr+7j8wICAgyGDjGd8EhhhqmAlNZGKTGG6EkUYZbYyxxpnUZCY3hSlNZWo/8EPTmNZ0pjeDGc1kZrOY1WxmN4c5zWVu85jXj8xnfgtY0EIWtohFLWZxP7aEn1jSUpa2jGUtZ3krWNFKVraKVa1mdWtY01rWto51/dR61reBDW1kY5vY1GY2t4UtbWVr29jWdra3gx3tZGc/s4td/dwv7GZ3e9jTXvb2S/v4lX392n72d4ADHeRghzjUYQ53hCMd5WjHONZxjneCE/3Gb53kZKc41e/83mlOd4YzneVs5zjXec53gQtd5GKXuNRlLneFP7jSVa52jT/6k2td53o3uNFNbnaLW93mdne4013udo973ed+D3jQQx72iEc95s8e94QnPeVpz3jWc573ghe95C9e9opXveZ1f/U3f/cPb3jTW/7pX972jne9530f+NC//cd/feR/PvaJT33m/z73hS995Wvf+NZ3BgRikMHGM74JDDHUMBOayMQmMdwII40y2hhjjTOpyUzue7bfgMY=
+  </data>
+ </layer>
+ <objectgroup name="object" width="20" height="14">
+  <properties>
+   <property name="zhedangwu" value="5018_1_|1,5018_2_|1|3,5018_2_|1|3,5018_3_|1|3,5018_4_|1|3,5018_5_|1|3,5018_6_|1|3,5018_7_|1|3,5018_8_|1|3,5018_9_|1|3"/>
+  </properties>
+  <object name="enemy" x="1200" y="1120" width="80" height="80">
+   <properties>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="enemy" x="800" y="0" width="80" height="80">
+   <properties>
+    <property name="chufadian" value="1"/>
+    <property name="id" value="1"/>
+   </properties>
+  </object>
+  <object name="enemy" x="0" y="560" width="80" height="80">
+   <properties>
+    <property name="chufadian" value="2"/>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+  <object name="enemy" x="1120" y="240" width="80" height="80">
+   <properties>
+    <property name="SearchR" value="4"/>
+    <property name="id" value="3"/>
+   </properties>
+  </object>
+  <object name="enemy" x="400" y="800" width="80" height="80">
+   <properties>
+    <property name="SearchR" value="4"/>
+    <property name="id" value="4"/>
+   </properties>
+  </object>
+  <object name="hero" x="1200" y="880" width="80" height="80">
+   <properties>
+    <property name="dir" value="1"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="obstacle" x="0" y="0" width="80" height="640"/>
+  <object name="obstacle" x="80" y="400" width="80" height="240"/>
+  <object name="obstacle" x="0" y="720" width="80" height="400"/>
+  <object name="obstacle" x="80" y="1040" width="1120" height="80"/>
+  <object name="obstacle" x="1280" y="1040" width="320" height="80"/>
+  <object name="obstacle" x="1520" y="0" width="80" height="1040"/>
+  <object name="obstacle" x="80" y="0" width="1440" height="80"/>
+  <object name="obstacle" x="800" y="320" width="160" height="160"/>
+  <object name="obstacle" x="80" y="80" width="320" height="80"/>
+  <object name="obstacle" x="640" y="720" width="320" height="160"/>
+  <object name="obstacle" x="1360" y="80" width="160" height="80"/>
+  <object name="obstacle" x="1440" y="160" width="80" height="160"/>
+  <object name="road" x="1200" y="1040" width="80" height="80">
+   <properties>
+    <property name="dir" value="2"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="road" x="1200" y="960" width="80" height="80">
+   <properties>
+    <property name="dir" value="2"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="800" y="240" width="80" height="80">
+   <properties>
+    <property name="id" value="1"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="1040" y="320" width="80" height="80">
+   <properties>
+    <property name="id" value="1"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="1120" y="400" width="80" height="80">
+   <properties>
+    <property name="id" value="1"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="720" y="320" width="80" height="80">
+   <properties>
+    <property name="id" value="1"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="960" y="240" width="80" height="80">
+   <properties>
+    <property name="id" value="1"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="1200" y="480" width="80" height="80">
+   <properties>
+    <property name="id" value="1"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="480" y="560" width="80" height="80">
+   <properties>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="640" y="400" width="80" height="80">
+   <properties>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="320" y="720" width="80" height="80">
+   <properties>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="400" y="640" width="80" height="80">
+   <properties>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="560" y="480" width="80" height="80">
+   <properties>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="bornplace" width="20" height="14">
+  <object name="bornplace" x="560" y="480" width="80" height="80"/>
+  <object name="bornplace" x="1040" y="480" width="80" height="80"/>
+ </objectgroup>
+</map>

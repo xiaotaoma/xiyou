@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SysCallModel>
+	<row>
+		<sysId>10100</sysId>
+		<name>天使妹妹</name>
+		<demage></demage>
+		<attSpeed>1</attSpeed>
+		<moveSpeed>0.8</moveSpeed>
+		<range>2</range>
+		<attType>0</attType>
+		<penetrate>0</penetrate>
+		<lastTime></lastTime>
+		<skillId></skillId>
+	</row>
+	<row>
+		<sysId>10100</sysId>
+		<name>天使妹妹</name>
+		<demage></demage>
+		<attSpeed>1</attSpeed>
+		<moveSpeed>0.8</moveSpeed>
+		<range>2</range>
+		<attType>0</attType>
+		<penetrate>0</penetrate>
+		<lastTime></lastTime>
+		<skillId></skillId>
+	</row>
+</SysCallModel>

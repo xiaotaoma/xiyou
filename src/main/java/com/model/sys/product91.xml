@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<product91>
+	<row>
+		<id>1</id>
+		<good>100000</good>
+		<price>6.00</price>
+		<pid91>101880-20130719-174925768-94</pid91>
+		<productName>100000铜币礼包</productName>
+		<moneyType>2</moneyType>
+		<num>100000</num>
+	</row>
+	<row>
+		<id>2</id>
+		<good>550,000|赠送 10%</good>
+		<price>30.00</price>
+		<pid91>101880-20130724-095307348-57</pid91>
+		<productName>550000铜币礼包</productName>
+		<moneyType>2</moneyType>
+		<num>550000</num>
+	</row>
+	<row>
+		<id>3</id>
+		<good>1,360,000|赠送 20%</good>
+		<price>68.00</price>
+		<pid91>101880-20130724-095543846-72</pid91>
+		<productName>1360000铜币礼包</productName>
+		<moneyType>2</moneyType>
+		<num>1360000</num>
+	</row>
+	<row>
+		<id>4</id>
+		<good>4,950,000|赠送 50%</good>
+		<price>198.00</price>
+		<pid91>101880-20130724-095859250-39</pid91>
+		<productName>4950000铜币礼包</productName>
+		<moneyType>2</moneyType>
+		<num>4950000</num>
+	</row>
+	<row>
+		<id>5</id>
+		<good>9,300,000|赠送 70%</good>
+		<price>328.00</price>
+		<pid91>101880-20130724-100011515-78</pid91>
+		<productName>9300000铜币礼包</productName>
+		<moneyType>2</moneyType>
+		<num>9300000</num>
+	</row>
+	<row>
+		<id>6</id>
+		<good>21,600,000|赠送 100%</good>
+		<price>648.00</price>
+		<pid91>101880-20130724-100239168-53</pid91>
+		<productName>21600000铜币礼包</productName>
+		<moneyType>2</moneyType>
+		<num>21600000</num>
+	</row>
+	<row>
+		<id>7</id>
+		<good>100</good>
+		<price>6.00</price>
+		<pid91>101880-20130724-100504807-38</pid91>
+		<productName>100元宝礼包</productName>
+		<moneyType>1</moneyType>
+		<num>100</num>
+	</row>
+	<row>
+		<id>8</id>
+		<good>550|赠送 10%</good>
+		<price>30.00</price>
+		<pid91>101880-20130724-100603587-44</pid91>
+		<productName>550元宝礼包</productName>
+		<moneyType>1</moneyType>
+		<num>550</num>
+	</row>
+	<row>
+		<id>9</id>
+		<good>1,360|赠送 20%</good>
+		<price>68.00</price>
+		<pid91>101880-20130724-100651587-44</pid91>
+		<productName>1360元宝礼包</productName>
+		<moneyType>1</moneyType>
+		<num>1360</num>
+	</row>
+	<row>
+		<id>10</id>
+		<good>4,950|赠送 50%</good>
+		<price>198.00</price>
+		<pid91>101880-20130724-100810679-50</pid91>
+		<productName>4950元宝礼包</productName>
+		<moneyType>1</moneyType>
+		<num>4950</num>
+	</row>
+	<row>
+		<id>11</id>
+		<good>9,300|赠送 70%</good>
+		<price>328.00</price>
+		<pid91>101880-20130724-100906632-90</pid91>
+		<productName>9300元宝礼包</productName>
+		<moneyType>1</moneyType>
+		<num>9300</num>
+	</row>
+	<row>
+		<id>12</id>
+		<good>21,600|赠送 100%</good>
+		<price>648.00</price>
+		<pid91>101880-20130724-101001865-65</pid91>
+		<productName>21600元宝礼包</productName>
+		<moneyType>1</moneyType>
+		<num>21600</num>
+	</row>
+</product91>

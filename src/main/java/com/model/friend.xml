@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Friend">
+	<typeAlias alias="Friend" type="com.model.Friend"/>
+	
+	<select id="getFriendByHid" parameterClass="int" resultClass="Friend">
+		select * from friend where hid=#value#
+	</select>
+	
+	<insert id="insert" parameterClass="Friend">
+		insert into friend (hid,data,head) values(#hid#,#data#,#head#)
+	</insert>
+	
+	<update id="update" parameterClass="Friend">
+		update friend set data = #data# where id = #id#
+	</update>
+</sqlMap>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Bag">
+	<typeAlias alias="Bag" type="com.model.Bag"/>
+	<insert id="insert" parameterClass="Bag">
+		insert into bag (id,hid,data) values (#id#,#hid#,#data#)
+		<selectKey	resultClass="int" keyProperty="id">
+			select last_insert_id() as ID from bag limit 1
+		</selectKey>
+	</insert>
+	<update id="update" parameterClass="Bag">
+		update bag set data = #data# where hid = #hid#
+	</update>
+	
+	<select id="getByHid" parameterClass="int" resultClass="Bag">
+		select * from bag where hid=#value#
+	</select>
+</sqlMap>

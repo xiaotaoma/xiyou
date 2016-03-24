@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CopperShop>
+	<row>
+		<id>1</id>
+		<moneyType>1</moneyType>
+		<price>120</price>
+		<name>小小堆銅幣</name>
+		<context>購買小小堆銅幣
+【獲得】銅幣120000</context>
+		<copper>120000</copper>
+	</row>
+	<row>
+		<id>2</id>
+		<moneyType>1</moneyType>
+		<price>600</price>
+		<name>小袋銅幣</name>
+		<context>購買小袋銅幣
+【獲得】銅幣600000
+【贈送】5%，共獲得660000銅幣</context>
+		<copper>660000</copper>
+	</row>
+	<row>
+		<id>3</id>
+		<moneyType>1</moneyType>
+		<price>1200</price>
+		<name>中袋銅幣</name>
+		<context>購買中袋銅幣
+【獲得】銅幣1200000
+【贈送】10%，共獲得1320000銅幣</context>
+		<copper>1320000</copper>
+	</row>
+	<row>
+		<id>4</id>
+		<moneyType>1</moneyType>
+		<price>3000</price>
+		<name>大袋銅幣</name>
+		<context>購買大袋銅幣
+【獲得】銅幣3000000
+【贈送】20%，共獲得3600000銅幣</context>
+		<copper>3600000</copper>
+	</row>
+	<row>
+		<id>5</id>
+		<moneyType>1</moneyType>
+		<price>6000</price>
+		<name>超大袋銅幣</name>
+		<context>購買超大袋銅幣
+【獲得】銅幣6000000
+【贈送】50%，共獲得9000000銅幣</context>
+		<copper>9000000</copper>
+	</row>
+	<row>
+		<id>6</id>
+		<moneyType>1</moneyType>
+		<price>12000</price>
+		<name>一大箱銅幣</name>
+		<context>購買一大箱銅幣
+【獲得】銅幣12000000
+【贈送】100%，共獲得24000000銅幣</context>
+		<copper>24000000</copper>
+	</row>
+</CopperShop>

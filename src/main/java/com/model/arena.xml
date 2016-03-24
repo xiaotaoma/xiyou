@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Arena">
+	<typeAlias alias="Arena" type="com.model.Arena"/>
+	<insert id="insert" parameterClass="Arena">
+		insert into arena (id,hid,rank,strength,prestige,retinue,times,time,name,achievement,score,wave) 
+		values(#id#,#hid#,#rank#,#strength#,#prestige#,#retinue#,#times#,#time#,#name#,#achievement#,#score#,#wave#)
+	</insert>
+	
+	<select id="getByHid" parameterClass="int" resultClass="Arena">
+		select * from arena where hid=#value#
+	</select>
+	
+	<update id="update" parameterClass="Arena">
+		update arena set hid=#hid#,rank=#rank#,strength=#strength#,prestige=#prestige#,retinue=#retinue#,name=#name#,
+		times=#times#,time=#time#,achievement=#achievement#,score=#score#,wave=#wave# where id=#id#
+	</update>
+	<select id="getRank" parameterClass="int" resultClass="int">
+		select count(1) from arena where prestige>#value# order by prestige desc;
+	</select>
+	
+	<select id="getRankByHid" parameterClass="int" resultClass="int">
+		select rank from arena where hid=#value#
+	</select>
+	
+	<select id="get100" resultClass="Arena" parameterClass="int">
+		select * from arena where #value#>=rank order by rank desc
+	</select>
+	
+	<select id="getBig" resultClass="Arena" parameterClass="java.util.HashMap">
+		select * from arena order by prestige desc limit #start#,#num#
+	</select>
+	
+	<select id="getlastRank" resultClass="int">
+		select count(*) from arena;
+	</select>
+	
+	<select id="getMatch" resultClass="Arena" parameterClass="int">
+		select * from arena where strength+200>=#value# and #value#>=strength-200
+	</select>
+	
+	<update id="updateStrength" parameterClass="java.util.HashMap">
+		update arena set strength=#strength# where hid=#hid#
+	</update>
+	
+	<update id="updateRetinue" parameterClass="java.util.HashMap">
+		update arena set retinue=#retinue# where hid=#hid#
+	</update>
+	
+	<select id="getAchievement" parameterClass="int" resultClass="java.lang.String">
+		select achievement from arena where hid=#value#
+	</select>
+	
+	<parameterMap class="java.util.HashMap" id="map">
+		<parameter property="hid" javaType="int" jdbcType="int"/>
+		<parameter property="achievement" javaType="java.lang.String" jdbcType="varchar"/>
+	</parameterMap>
+	<update id="updateAchievement" parameterClass="map">
+		update arena set achievement = #achievement# where hid = #hid#
+	</update>
+	
+	<select id="getRankList" parameterClass="java.util.HashMap" resultClass="Arena">
+		select * from arena where rank>#start# and #end#>rank order by rank desc
+	</select>
+	
+	
+	<select id="getList" parameterClass="java.util.HashMap" resultClass="Arena">
+		select * from arena where prestige>=#p1# and #p2#>=prestige order by rank asc
+	</select>
+	
+	<select id="getMaxRank" resultClass="int">
+		select max(rank) from arena
+	</select>
+	
+	<select id="getCountByPrestige" parameterClass="int" resultClass="int">
+		select count(*) from arena where prestige > #value#
+	</select>
+	
+	<update id="updateRank" parameterClass="Arena">
+		update arena set prestige=#prestige# where id = #id#
+	</update>
+	
+	<select id="getAll" resultClass="Arena">
+		select * from arena order by prestige desc;
+	</select>
+	
+	<select id="getWaveRank" resultClass="Arena">
+		select hid,name,wave,retinue from arena order by wave desc limit 100
+	</select>
+</sqlMap>

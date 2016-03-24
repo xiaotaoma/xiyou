@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Hero">
+	<typeAlias alias="Hero" type="com.model.Hero"/>
+	<insert id="insert" parameterClass="Hero">
+		insert into hero (id,name,money,level,accId,account,strength,wave,times,honorTime,createTime,tid,treeCopper,treeMoney,tids) 
+		values (#id#,#name#,#money#,#level#,#accId#,#account#,#strength#,#wave#,#times#,#honorTime#,#createTime#,#tid#,#treeCopper#,#treeMoney#,#tids#)
+		<selectKey	resultClass="int" keyProperty="id">
+			select last_insert_id() as ID from hero limit 1
+		</selectKey>
+	</insert>
+	<select id="getByAccId" parameterClass="int" resultClass="Hero">
+		select * from hero where accId=#value#
+	</select>
+	<select id="getById" parameterClass = "int" resultClass = "Hero">
+		select * from hero where id = #value#
+	</select>
+	<select id="getHeroByName" parameterClass="java.lang.String" resultClass="Hero">
+		select * from hero where name = #value#
+	</select>
+	
+	<select id="getName" parameterClass="int" resultClass="java.lang.String">
+		select name from hero where id =#value#
+	</select>
+	<update id="update" parameterClass="Hero">
+		update hero set name=#name#,money=#money#,level=#level#,accId=#accId#,account=#account#,
+		strength=#strength#,treeTime=#treeTime#,wave=#wave#,loginTime=#loginTime#,logoutTime=#logoutTime#,honour=#honour#
+		,times=#times#,honorTime=#honorTime#,tid=#tid#,buyTimes=#buyTimes#,
+		treeCopper=#treeCopper#,treeMoney=#treeMoney#,tids=#tids#,firstPay=#firstPay#,firstPay=#firstPay#,
+		daily=#daily#,days=#days#,conAward=#conAward#,onlineTime=#onlineTime#,dailyOnline=#dailyOnline#
+		,charge=#charge#,dailyRecharge=#dailyRecharge#,resetTime=#resetTime#,copper=#copper#,
+		loginTimes=#loginTimes#,firstDouble=#firstDouble#,months=#months#,expOverTime=#expOverTime#,exp=#exp#,
+		award=#award#,maxWave=#maxWave#,equipUpTimes=#equipUpTimes#,challengeTimes=#challengeTimes#,
+		winTimes=#winTimes#,buyToolsTimes=#buyToolsTimes#,shakeTimes=#shakeTimes#,fishmenAward=#fishmenAward#,
+		robedCopper=#robedCopper#,inviteFriend=#inviteFriend#,invite=#invite#,terrace=#terrace#,endCardTime=#endCardTime#,
+		cardDailyAward=#cardDailyAward# where id =#id#
+	</update>
+	
+	<select id="honourRank" resultClass="Hero">
+		select id,name,money,level,accId,account,strength,treeTime,wave,loginTime,logoutTime,honour,times,honorTime,tid,endCardTime 
+		from hero order by honour desc,strength desc limit 100;
+	</select>
+	
+	<select id="getAllNum" resultClass="int">
+		select count(*) from hero;
+	</select>
+	
+	<select id="todayRegisterNum" parameterClass="int" resultClass="int">
+		select count(*) from hero where createTime>=#value#
+	</select>
+	
+	<select id="getByLoginTimes" resultClass="Hero">
+		select * from hero where loginTimes>=7
+	</select>
+	
+	<select id="getStrengthRank" resultClass="Hero">
+		select id,name,strength,tid,endCardTime from hero order by strength desc limit 100;
+	</select>
+	
+	<select id="getTreeCopper" parameterClass="java.util.List" resultClass="java.util.HashMap"> 
+		select id,treeCopper from hero where id in
+		<iterate conjunction="," open="(" close=")">
+			#value[]#
+		</iterate>
+	</select>
+	
+	<select id="getEndCardTime" parameterClass="java.util.List" resultClass="java.util.HashMap"> 
+		select id,endCardTime from hero where id in
+		<iterate conjunction="," open="(" close=")">
+			#value[]#
+		</iterate>
+	</select>	
+	
+	<select id="getRobRank" resultClass="Hero">
+		select id,name,robedCopper,tid,endCardTime from hero where robedCopper>0 order by robedCopper desc limit 100;
+	</select>
+	
+	<parameterMap class="java.util.HashMap" id="map">
+		<parameter property="copper" javaType="int" jdbcType="int"/>
+		<parameter property="hid" javaType="int" jdbcType="int"/>
+	</parameterMap>
+	<update id="giveCopper" parameterClass="map">
+		update hero set copper = #copper#+copper where id=#hid#
+	</update>
+</sqlMap>

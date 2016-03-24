@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:ehcache="http://www.springmodules.org/schema/ehcache"
+	   xsi:schemaLocation="
+			 http://www.springframework.org/schema/beans
+			 http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			 http://www.springframework.org/schema/context
+			 http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			 http://www.springmodules.org/schema/ehcache
+			 http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd
+			 http://www.springframework.org/schema/tx
+			 http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			 http://www.springframework.org/schema/aop
+			 http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
+	   default-lazy-init="true">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		  destroy-method="close">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://192.168.1.99/xiyou?useUnicode=true&amp;characterEncoding=utf-8</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>123456</value>
+		</property>
+
+		<property name="maxActive">
+			<value>1000</value>
+		</property>
+		<property name="maxWait">
+			<value>5000</value>
+		</property>
+		<property name="maxIdle">
+			<value>30</value>
+		</property>
+		<property name="defaultAutoCommit">
+			<value>false</value>
+		</property>
+		<!--  自动回收连接池，避免连接池泄露 -->
+		<property name="removeAbandoned">
+			<value>true</value>
+		</property>
+		<property name="removeAbandonedTimeout">
+			<value>60</value>
+		</property>
+	</bean>
+
+
+
+	<!-- 事务管理器 -->
+	<bean id="transactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" lazy-init="true">
+		<property name="transactionManager">
+			<ref bean="transactionManager2" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+				<prop key="remove*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="modify*">PROPAGATION_REQUIRED</prop>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:sqlmap-config.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="accountDAO" class="com.dao.impl.AccountDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="accountManager" class="com.service.impl.AccountManagerImpl">
+		<property name="accountDao">
+			<ref bean="accountDAO"/>
+		</property>
+	</bean>
+	<bean id="heroDAO" class="com.dao.impl.HeroDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="heroManager" class="com.service.impl.HeroManagerImpl">
+		<property name="heroDao">
+			<ref bean="heroDAO"/>
+		</property>
+	</bean>
+	<bean id="arenaDAO" class="com.dao.impl.ArenaDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="arenaManager" class="com.service.impl.ArenaManagerImpl">
+		<property name="arenaDao">
+			<ref bean="arenaDAO"/>
+		</property>
+	</bean>
+
+	<bean id="friendDAO" class="com.dao.impl.FriendDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="friendManager" class="com.service.impl.FriendManagerImpl">
+		<property name="friendDao">
+			<ref bean="friendDAO"/>
+		</property>
+	</bean>
+	<bean id="announcementDAO" class="com.dao.impl.AnnouncementDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="announcementManager" class="com.service.impl.AnnouncementManagerImpl">
+		<property name="announcementDao">
+			<ref bean="announcementDAO"/>
+		</property>
+	</bean>
+	<bean id="reportDAO" class="com.dao.impl.ReportDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="reportManager" class="com.service.impl.ReportManagerImpl">
+		<property name="reportDao">
+			<ref bean="reportDAO"/>
+		</property>
+	</bean>
+
+	<bean id="onlineNumDAO" class="com.dao.impl.Back_onlineNumDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="onlineNumManager" class="com.service.impl.Back_onlineNumManagerImpl">
+		<property name="onlineNumDao">
+			<ref bean="onlineNumDAO"/>
+		</property>
+	</bean>
+
+	<bean id="recordDAO" class="com.dao.impl.Back_recordDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="recordManager" class="com.service.impl.Back_recordManagerImpl">
+		<property name="recordDao">
+			<ref bean="recordDAO"/>
+		</property>
+	</bean>
+
+	<bean id="rechargeDAO" class="com.dao.impl.Back_rechargeDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="rechargeManager" class="com.service.impl.Back_rechargeManagerImpl">
+		<property name="rechargeDao">
+			<ref bean="rechargeDAO"/>
+		</property>
+	</bean>
+
+	<!--  -->
+	<bean id="loginDAO" class="com.dao.impl.Back_loginDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="loginManager" class="com.service.impl.Back_loginManagerImpl">
+		<property name="loginDao">
+			<ref bean="loginDAO"/>
+		</property>
+	</bean>
+
+	<!--  -->
+	<bean id="registerDAO" class="com.dao.impl.Back_registerDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="registerManager" class="com.service.impl.Back_registerManagerImpl">
+		<property name="registerDao">
+			<ref bean="registerDAO"/>
+		</property>
+	</bean>
+
+
+	<bean id="temporaryDataDAO" class="com.dao.impl.Back_temporaryDataDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="temporaryDataManager" class="com.service.impl.Back_temporaryDataManagerImpl">
+		<property name="temporaryDataDao">
+			<ref bean="temporaryDataDAO"/>
+		</property>
+	</bean>
+	<bean id="pay_messageDAO" class="com.dao.impl.Back_pay_messageDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="pay_messageManager" class="com.service.impl.Back_pay_messageManagerImpl">
+		<property name="pay_messageDao">
+			<ref bean="pay_messageDAO"/>
+		</property>
+	</bean>
+	<!-- 91支付表 -->
+	<bean id="pay91DAO" class="com.dao.impl.Back_pay91DaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="pay91Manager" class="com.service.impl.Back_pay91ManagerImpl">
+		<property name="pay91Dao">
+			<ref bean="pay91DAO"/>
+		</property>
+	</bean>
+
+	<!-- 服务器元宝 -->
+	<bean id="moneyDAO" class="com.dao.impl.Back_moneyDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="moneyManager" class="com.service.impl.Back_moneyManagerImpl">
+		<property name="moneyDao">
+			<ref bean="moneyDAO"/>
+		</property>
+	</bean>
+
+	<!-- 服务器元宝 -->
+	<bean id="leaveMessageDAO" class="com.dao.impl.LeaveMessageDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="leaveMessageManager" class="com.service.impl.LeaveMessageManagerImpl">
+		<property name="leaveMessageDao">
+			<ref bean="leaveMessageDAO"/>
+		</property>
+	</bean>
+
+	<!-- 背包-->
+	<bean id="bagDAO" class="com.dao.impl.BagDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="bagManager" class="com.service.impl.BagManagerImpl">
+		<property name="bagDao">
+			<ref bean="bagDAO"/>
+		</property>
+	</bean>
+	<!-- 台湾充值-->
+	<bean id="paytaiwanDAO" class="com.dao.impl.Back_paytaiwanDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="paytaiwanManager" class="com.service.impl.Back_paytaiwanManagerImpl">
+		<property name="paytaiwanDao">
+			<ref bean="paytaiwanDAO"/>
+		</property>
+	</bean>
+
+	<!-- 电信充值-->
+	<bean id="dianxinDAO" class="com.dao.impl.Back_pay_dianxinDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="dianxinManager" class="com.service.impl.Back_pay_dianxinManagerImpl">
+		<property name="dianxinDao">
+			<ref bean="dianxinDAO"/>
+		</property>
+	</bean>
+	<!-- 移动充值-->
+	<bean id="payyidongDAO" class="com.dao.impl.Back_payyidongDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="payyidongManager" class="com.service.impl.Back_payyidongManagerImpl">
+		<property name="payyidongDao">
+			<ref bean="payyidongDAO"/>
+		</property>
+	</bean>
+	<bean id="toolDAO" class="com.dao.impl.Back_toolDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="toolManager" class="com.service.impl.Back_toolManagerImpl">
+		<property name="toolDao">
+			<ref bean="toolDAO"/>
+		</property>
+	</bean>
+</beans> 

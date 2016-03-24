@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Back_pay_dianxin">
+	<typeAlias alias="Back_pay_dianxin" type="com.model.backstage.Back_pay_dianxin"/>
+	<insert id="insert" parameterClass="Back_pay_dianxin">
+		insert into back_pay_dianxin (zoneid,account,hid,time,serialno,money,payType,copper,orderId,give,pid,giveTime)
+		values(#zoneid#,#account#,#hid#,#time#,#serialno#,#money#,#payType#,#copper#,#orderId#,#give#,#pid#,#giveTime#)
+	</insert>
+	
+	<select id="getUnDoneDeal"  parameterClass="int" resultClass="Back_pay_dianxin">
+		select * from back_pay_dianxin where hid = #value# and give = 0
+	</select>
+	<select id = "getByOrderId" parameterClass="int" resultClass="Back_pay_dianxin">
+		select * from back_pay_dianxin where orderId = #value#
+	</select>
+	
+	<update id="update" parameterClass="java.util.HashMap">
+		update back_pay_dianxin set give=1,giveTime=#giveTime# where orderId=#orderId#
+	</update>
+</sqlMap>

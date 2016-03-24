@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Report">
+	<typeAlias alias="Report" type="com.model.Report"/>
+	<insert id="insert" parameterClass="Report">
+		insert into report (hid,thid,time,name,tName,descId,retinue,type,strength1,strength2,robCopper) 
+		values (#hid#,#thid#,#time#,#name#,#tName#,#descId#,#retinue#,#type#,#strength1#,#strength2#,#robCopper#)
+	</insert>
+	
+	<select id="getReports" parameterClass="int" resultClass="Report">
+		select * from report where thid = #value# order by id desc limit 12
+	</select>
+	
+	<select id="getBobedReports" parameterClass="int" resultClass="Report">
+		select * from report where thid = #value# and type=1 order by id desc limit 10
+	</select>
+</sqlMap>

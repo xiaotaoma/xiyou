@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<shop>
+	<row>
+		<id>1</id>
+		<toolId>15900</toolId>
+		<moneyType>1</moneyType>
+		<price>100</price>
+	</row>
+	<row>
+		<id>2</id>
+		<toolId>15901</toolId>
+		<moneyType>1</moneyType>
+		<price>1000</price>
+	</row>
+	<row>
+		<id>3</id>
+		<toolId>15902</toolId>
+		<moneyType>1</moneyType>
+		<price>10</price>
+	</row>
+	<row>
+		<id>4</id>
+		<toolId>15903</toolId>
+		<moneyType>1</moneyType>
+		<price>10</price>
+	</row>
+	<row>
+		<id>5</id>
+		<toolId>15904</toolId>
+		<moneyType>1</moneyType>
+		<price>200</price>
+	</row>
+	<row>
+		<id>6</id>
+		<toolId>15905</toolId>
+		<moneyType>1</moneyType>
+		<price>800</price>
+	</row>
+	<row>
+		<id>7</id>
+		<toolId>16010</toolId>
+		<moneyType>1</moneyType>
+		<price>300</price>
+	</row>
+</shop>

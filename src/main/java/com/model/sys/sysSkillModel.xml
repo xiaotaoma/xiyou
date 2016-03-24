@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<money>
+	<row>
+		<id>11</id>
+		<role></role>
+		<name>上升</name>
+		<level>1</level>
+		<copper>1111</copper>
+		<money>111</money>
+		<levelUp></levelUp>
+		<demage>50</demage>
+		<effect>2,减速,10%,3</effect>
+		<lastTime>1</lastTime>
+		<attSpeed>11</attSpeed>
+		<zhaohuan></zhaohuan>
+		<special>0</special>
+		<mp>100</mp>
+		<cd>1</cd>
+		<effectNums>11</effectNums>
+		<fly></fly>
+		<range>1</range>
+	</row>
+	<row>
+		<id>11</id>
+		<role></role>
+		<name>上升</name>
+		<level>1</level>
+		<copper>1111</copper>
+		<money>111</money>
+		<levelUp></levelUp>
+		<demage>50</demage>
+		<effect>2,减速,10%,3</effect>
+		<lastTime>1</lastTime>
+		<attSpeed>11</attSpeed>
+		<zhaohuan></zhaohuan>
+		<special>0</special>
+		<mp>100</mp>
+		<cd>1</cd>
+		<effectNums>11</effectNums>
+		<fly></fly>
+		<range>1</range>
+	</row>
+</money>

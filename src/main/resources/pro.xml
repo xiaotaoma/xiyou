@@ -1,0 +1,1400 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<protocol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!-- 数据类型对应 -->
+<!-- byte int8u  -->
+<!-- short  int16u-->
+<!-- int  int32u -->
+<!-- utf  strtingl -->
+	<!-- 错误协议提示 -->
+	<row>
+		<cmd name="GAMEERROR">999</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int16u</type>
+		</types>
+	</row>
+		
+	<row>
+		<cmd name="REQUESTLOGIN">1001</cmd>
+		<direction>CG</direction><!-- GC：服务器到客户端            CG：客户端到服务器-->
+		<types>
+			<type name="account">stringl</type><!-- 账号 -->
+			<type name="checkcode">stringl</type><!-- 验证码 -->
+			<type name="terrace">stringl</type><!-- 平台 -->
+			<type name="type">int8u</type><!-- 登陆类型，安卓，ios -->
+			<type name="version">stringl</type><!-- 版本号 -->
+		</types>
+	</row>
+	
+	<row>
+		<cmd name="REQUESTLOGINREQUEST">1002</cmd>
+		<direction>GC</direction><!-- GC：服务器到客户端            CG：客户端到服务器-->
+		<types>
+			<type name="result">int8u</type><!-- 注册账号结果 ,1有角色,2没有角色-->
+		</types>
+	</row>
+	
+	<!-- 请求角色 -->
+	<row>
+		<cmd name="REQUESTHERO">1003</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="account">stringl</type><!--  -->
+		</types>
+	</row>
+	<!-- 请求角色结果 -->
+	<row>
+		<cmd name="REQUESTHEROREQUEST">1004</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 有角色1，没有2 -->
+			<type name="discount">int16u</type>
+			<iterator name="HEROLIST" count="int8u" id="1005">herolist</iterator>
+		</types>
+	</row>
+	<!-- 发送角色信息 -->
+	<iterator>
+		<id name="HEROLIST" count="int8u" id="1005">herolist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="name">stringl</type><!-- 角色名 -->
+			<type name="money">int32u</type><!-- 元宝 -->
+			<type name="invite">int8u</type><!-- 有没有被邀请过，0 没有，1，有 -->
+		</types>
+	</iterator>
+	<!-- 创建角色 -->
+	<row>
+		<cmd name="CREATEHERO">1006</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="name">stringl</type><!-- 角色名 -->
+		</types>
+	</row>
+	<!-- 客户端同步战斗力 -->
+	<row>
+		<cmd name="STRENGTH">1007</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name = "strength">int32u</type><!-- 战斗力 -->
+			<type name = "retinue">int32u</type><!-- 徒弟id -->
+			<type name = "level">int8u</type><!-- 等级 -->
+		</types>
+	</row>
+	<!-- 心跳 -->
+	<row>
+		<cmd name="HEARTBEAT">1008</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name = "hid">int32u</type><!-- 角色id  -->
+		</types>
+	</row>
+	<!-- 心跳返回 -->
+	<row>
+		<cmd name="HEARTBEATRETURN">1009</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type>
+		</types>
+	</row>
+	<!-- 花元宝 -->
+	<row>
+		<cmd name="SPENDMONEY">1010</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="type">int16u</type><!-- 花费类型 -->
+			<type name="id">int16u</type><!-- id -->
+			<type name="level">int16u</type><!-- 等级 -->
+		</types>
+	</row>
+	<!-- 花元宝返回 -->
+	<row>
+		<cmd name="SPENDMONEYRESULT">1011</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name = "result">int8u</type><!-- 成功失败 -->
+			<type name = "type">int8u</type>
+			<type name = "money">int32u</type><!-- 剩余元宝 -->
+		</types>
+	</row>
+	<!-- 广播 -->
+	<row>
+		<cmd name="broadcast">1012</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name = "red">int8u</type><!-- -->
+			<type name = "green">int8u</type><!-- -->
+			<type name = "black">int8u</type><!-- -->
+			<type name = "content">stringl</type><!-- -->
+		</types>
+	</row>
+	<!-- 摇钱树 -->
+	<row>
+		<cmd name="TREE">1013</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="time">int32u</type><!-- 可以摇的时间 -->
+			<type name="copper">int32u</type><!-- 铜币数量 -->
+			<type name="money">int32u</type><!-- 一定几率获得元宝 -->
+		</types>
+	</row>
+	<!-- 摇钱 -->
+	<row>
+		<cmd name="TREERESULT">1014</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="choose">int8u</type><!-- 登陆的时候发1，领取发2 -->
+		</types>
+	</row>
+	<!-- 给铜币 -->
+	<row>
+		<cmd name="GIVECOPPER">1015</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="copper">int32u</type><!-- 铜币数量 -->
+		</types>
+	</row>
+	
+	<!-- 掉线提醒 -->
+	<row>
+		<cmd name="DROPPED">1016</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- -->
+		</types>
+	</row>
+	
+	<!-- 加元宝 -->
+	<row>
+		<cmd name="GIVEMONEY">1017</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="money">int32u</type><!-- 元宝总数 -->
+		</types>
+	</row>
+	<!-- 充值成功 -->
+	<row>
+		<cmd name="RECHARGERESULT">1018</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 1成功，0失败 -->
+		</types>
+	</row>
+	<!-- 角色下线 -->
+	<row>
+		<cmd name="LOGOUT">1019</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id-->
+		</types>
+	</row>
+	<!-- 首次充值双倍奖励 -->
+	<row>
+		<cmd name="DOUBLEAWARD">1020</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="length">int16</type><!-- 长度 -->
+			<type name="ids">Arrayint32</type><!-- 没有双倍奖励的id -->
+		</types>
+	</row>
+	<!-- 增加经验 -->
+	<row>
+		<cmd name="ADDEXP">1021</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="exp">int32u</type><!-- 经验值-->
+		</types>
+	</row>
+	<!-- 竞技场 -->
+	<row>
+		<cmd name="BROADCASTARENA">1022</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="winnerName">stringl</type><!-- 获胜者名字 -->
+			<type name="LoserName">stringl</type><!-- 失败者名字 -->
+			<type name="copper">int32u</type><!-- 抢夺资源 -->
+			<type name="wave">int16u</type><!-- 波数 -->
+		</types>
+	</row>
+	
+	<!-- 邀请 inviteFriend-->
+	<row>
+		<cmd name="INVITEFRIEND">1023</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	
+	<!-- *********************竞技场*********************-->
+	<!-- 进入竞技场 ，打开竞技场界面-->
+	<row>
+		<cmd name="OPNEARENA">2001</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	
+	<!-- 返回竞技场列表 -->
+	<row>
+		<cmd name="ARENALIST">2002</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="rank">int32u</type><!-- 自己的排名 -->
+			<type name="chanllgeTimes">int8u</type><!-- 挑战次数 -->
+			<type name="discount">int16u</type>
+			<iterator name="ARENAROLELIST" count="int8u" id="2003">arenarolelist</iterator>
+			<type name="discount1">int16u</type>
+			<iterator name="ROBEDCOPPER" count="int16u" id="2059">robedCopper</iterator>
+			<type name="discount2">int16u</type><!-- 是否vip -->
+			<iterator name="ISVIP" count="int16u" id="2060">isvip</iterator>
+		</types>
+	</row>
+	<!-- 竞技场列表信息 -->
+	<iterator>
+		<id name="ARENAROLELIST" count="int16u" id="2003">arenarolelist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="rank">int32u</type><!-- 排名 -->
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="name">stringl</type><!-- 角色名 -->
+			<type name="prestige">int32u</type><!-- 威望-->
+			<type name="strength">int32u</type><!-- 战斗力 -->
+			<type name="retinue">int32u</type><!-- 随从 -->
+		</types>
+	</iterator>
+	<!-- 可供抢夺的资源 -->
+	<iterator>
+		<id name="ROBEDCOPPER" count="int16u" id="2059">robedCopper</id>
+		<direction>GC</direction>
+		<types>
+			<type name="copper">int32u</type><!-- 铜币 -->
+		</types>
+	</iterator>
+	<!-- 是否vip -->
+	<iterator>
+		<id name="ISVIP" count="int16u" id="2060">isvip</id>
+		<direction>GC</direction>
+		<types>
+			<type name="vip">int8u</type><!-- 是否vip -->
+		</types>
+	</iterator>
+	
+	<!-- 自动匹配 -->
+	<row>
+		<cmd name="MATCHING">2004</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	
+	<!-- 匹配结果 -->
+	<row>
+		<cmd name="MATCHINGRESULT">2005</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="rank">int32u</type><!-- 排名 -->
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="name">stringl</type><!-- 角色名 -->
+			<type name="prestige">int32u</type><!-- 威望-->
+			<type name="strength">int32u</type><!-- 战斗力 -->
+			<type name="retinue">int32u</type><!-- 随从 -->
+		</types>
+	</row>
+	
+	<!-- 挑战次数改变 -->
+	<row>
+		<cmd name="CHANLLGETIMECHANGE">2006</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="chanllgeTimes">int8u</type><!-- 挑战次数 -->
+			<type name="time">int16u</type><!-- 倒计时 -->
+		</types>
+	</row>
+	<!-- 竞技场排名 -->
+	<row>
+		<cmd name="ARENARANK">2007</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="arenaRank">int32u</type><!-- 竞技场排名 -->
+		</types>		
+	</row>
+	
+	<!-- 声望 -->
+	<row>
+		<cmd name="PRESTIGE">2008</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="prestige">int32u</type><!-- 声望 -->
+		</types>
+	</row>
+	
+	<!-- 竞技场挑战 -->
+	<row>
+		<cmd name="CHANGLLGE">2009</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 挑战的角色id -->
+		</types>
+	</row>
+	<!-- 挑战返回地图id -->
+	<row>
+		<cmd name="CHANGLLERETRUN">2010</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="mapId">int16u</type><!-- 地图id -->
+		</types>
+	</row>
+	<!-- 客户端请求出怪配置 -->
+	<row>
+		<cmd name="MONSTERSCONFIG">2011</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="wave">int32u</type><!-- 第几波怪 -->
+		</types>
+	</row>
+	<!-- 服务器返回出怪配置 -->
+	<row>
+		<cmd name="MONSTERSCONFIGRETURN">2012</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="wave">int32u</type><!-- 第几波怪 -->
+			<type name="config">stringl</type><!-- 出怪配置字符串 -->
+		</types>
+	</row>
+	<!-- 战斗结果 -->
+	<row>
+		<cmd name="BATTLERESULT">2013</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="wave">int32u</type><!-- 第几波怪 -->
+		</types>
+	</row>
+	
+	<!-- 战斗结果返回 -->
+	<row>
+		<cmd name="BATTLERESULTRETURN">2014</cmd>
+		<direction>GC</direction>
+		<types>
+			 <type name="otherName">stringl</type><!-- 对方名字 -->
+			 <type name="othertid">int32u</type><!-- 对方徒弟id -->
+			 <type name="winerhid">int32u</type><!--获胜的角色id  -->
+			 <type name="copper">int32u</type><!-- 铜币 -->
+			 <type name="money">int32u</type><!--  元宝-->
+			 <type name="shengwang">int16u</type><!-- 声望 -->
+			 <type name="honour">int32u</type><!-- 荣誉 -->
+			 <type name="robCopper">int32u</type><!-- 抢夺铜币数量 -->
+		</types>
+	</row>
+	<!-- 返回在线玩家 -->
+	<row>
+		<cmd name="ONLINEHERO">2015</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	
+	<!-- 创建房间 -->
+	<row>
+		<cmd name="MAKEROOM">2016</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="moveSpeed">int32u</type><!-- 移动速度 -->
+			<type name="tid">int32u</type><!-- 徒弟id -->
+			<type name="range">int32u</type><!-- 攻击范围 -->
+			<type name="attSpeed">int32u</type><!-- 攻击速度 -->
+			<type name="hp">int32u</type><!-- 当前生命值 -->
+			<type name="att">int32u</type><!-- 攻击 -->
+			<type name="armor">int32u</type><!-- 护甲 -->
+			<type name="mp">int32u</type><!-- 当前法力值 -->
+			<type name="fali">int32u</type><!-- 法力 -->
+			<type name="skillId1">int32u</type><!-- 普通攻击-->
+			<type name="skillId2">int32u</type><!-- 技能id -->
+			<type name="skillId3">int32u</type><!-- 技能id -->
+			<type name="skillId4">int32u</type><!-- 技能id -->
+			<type name="skillId5">int32u</type><!-- 技能id -->
+		</types>
+	</row>
+	<!-- 创建房间返回 -->
+	<row>
+		<cmd name="MAKEROOMRESULT">2017</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 进入结果 -->
+			<type name="rid">int32u</type>
+			<type name="leaderId">int32u</type><!-- 房主id -->
+			<type name="sidcount">int16u</type>
+			<iterator name="ROOMMESSAGE" count="int16u" id="2022">roommessage</iterator>
+		</types>
+	</row>
+	<!-- 进入房间结果   房间内广播-->
+	<iterator>
+		<id name="ROOMMESSAGE" count="int16u" id="2022">roommessage</id>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="name">stringl</type><!-- 角色名 -->
+			<type name="tid">int32u</type><!-- 徒弟id -->
+			<type name="level">int8u</type><!--等级-->
+			<type name="strngth">int32u</type><!-- 战斗力 -->
+			<type name="ready">int8u</type><!-- 有没有准备 -->
+		</types>
+	</iterator>
+	
+	<!-- 请求房间列表 -->
+	<row>
+		<cmd name="ROOMLIST">2018</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="page">int8u</type><!-- 页数 -->
+		</types>
+	</row>
+	<!-- 房间列表结果 -->
+	<row>
+		<cmd name="ROOMLISTRESULT">2019</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type>
+			<type name="pages">int32u</type><!-- 房间总页数 -->
+			<type name="page">int8u</type>
+			<type name="discount">int16u</type>
+			<iterator name="ROOMLIST" count="int16u" id="2020">roomlist</iterator>
+		</types>
+	</row>
+	<!-- 房间信息 -->
+	<iterator>
+		<id name="ROOMLIST" count="int16u" id="2020">roomlist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="rid">int32u</type><!-- 房间 -->
+			<type name="hid">int32u</type><!-- 房间主人id -->
+			<type name="tid">int32u</type><!-- 徒弟id -->
+			<type name="level">int8u</type><!--等级-->
+			<type name="strength">int32u</type><!--战斗力-->
+			<type name="name">stringl</type><!-- 房间主人名 -->
+			<type name="seat">int8u</type><!-- 有没有位置 -->
+		</types>
+	</iterator>
+	
+	<!-- 进入房间 -->
+	<row>
+		<cmd name="INROOM">2021</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="flag">int8u</type><!-- 是不是快速加入       1快速加入,2普通加入,3排队加入 -->
+			<type name="rid">int32u</type><!-- 房间id -->
+			<type name="tid">int32u</type><!-- 徒弟id -->
+			<type name="moveSpeed">int32u</type><!-- 移动速度 -->
+			<type name="range">int32u</type><!-- 攻击范围 -->
+			<type name="attSpeed">int32u</type><!-- 攻击速度 -->
+			<type name="hp">int32u</type><!-- 当前生命值 -->
+			<type name="att">int32u</type><!-- 攻击 -->
+			<type name="armor">int32u</type><!-- 护甲 -->
+			<type name="mp">int32u</type><!-- 当前法力值 -->
+			<type name="fali">int32u</type><!-- 法力 -->
+			<type name="skillId1">int32u</type><!-- 普通攻击-->
+			<type name="skillId2">int32u</type><!-- 技能id -->
+			<type name="skillId3">int32u</type><!-- 技能id -->
+			<type name="skillId4">int32u</type><!-- 技能id -->
+			<type name="skillId5">int32u</type><!-- 技能id -->
+		</types>
+	</row>
+	<!-- 准备 -->
+	<row>
+		<cmd name="READY">2023</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- 开始 -->
+	<row>
+		<cmd name="STARTFIGHT">2025</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- 进入地图 -->
+	<row>
+		<cmd name="START">2026</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="mapId">int32u</type><!-- 地图id -->
+			<type name="sidcount">int16u</type>
+			<iterator name="WALKLIST" count="int16u" id="2027">walklist</iterator>
+		</types>
+	</row>
+	<iterator>
+		<id name="WALKLIST" count="int16u" id="2027">walklist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="moveSpeed">int32u</type>
+			<type name="x">int32u</type>
+			<type name="y">int32u</type>
+		</types>
+	</iterator>
+	<!-- 走去哪里 -->
+	<row>
+		<cmd name="GO">2028</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="x">int32u</type>
+			<type name="y">int32u</type>
+		</types>
+	</row>
+	
+	<!-- 行走 -->
+	<row>
+		<cmd name="WALK">2029</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="x">int32u</type>
+			<type name="y">int32u</type>
+			<type name="targetX">int32u</type><!-- 目标点坐标 -->
+			<type name="targetY">int32u</type>
+		</types>
+	</row>
+	<!-- 退出房间 -->
+	<row>
+		<cmd name="QUITROOM">2030</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- 退出房间结果 -->
+	<row>
+		<cmd name="QUITROOMRESULT">2031</cmd><!--  -->
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int8u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- 角色信息  -->
+	<row>
+		<cmd name="MEMBERMESSAGE">2033</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type>
+			<type name="hpMax">int32u</type><!-- 血量上限 -->
+			<type name="hp">int32u</type>
+			<type name="mpMax">int32u</type><!-- 魔法上限 -->
+			<type name="mp">int32u</type>
+		</types>
+	</row>
+	
+	<row>
+		<cmd name="MEMBERPOSITION">2034</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="x">int32u</type><!-- x坐标 -->
+			<type name="y">int32u</type><!-- y坐标 -->
+		</types>
+	</row>
+	<!-- 对人使用技能 -->
+	<row>
+		<cmd name="USESKILLTOOTHER">2035</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 目标角色id -->
+			<type name="skillId">int32u</type><!-- 技能id -->
+			<type name="x">int32u</type><!-- x坐标 -->
+			<type name="y">int32u</type><!-- y坐标 -->
+			<type name="flag">int8u</type><!-- 是否持续技能 	 0不是持续技能，1持续技能   -->
+		</types>
+	</row>
+	<!-- 使用技能广播 -->
+	<row>
+		<cmd name="USESKILLRETURN">2036</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="thid">int32u</type><!-- 目标角色id -->
+			<type name="skillId">int32u</type><!-- 技能id -->
+			<type name="x">int32u</type><!-- x坐标 -->
+			<type name="y">int32u</type><!-- y坐标 -->
+			<type name="flag">int8u</type><!-- 是否持续技能      0不是持续技能，1持续技能 -->
+		</types>
+	</row>
+	
+	<!-- 有人被打死，战斗结束 -->
+	<row>
+		<cmd name="ENDBATTLE">2037</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 获胜者id -->
+		</types>
+	</row>
+	
+	<!-- 增加hp或 mp -->
+	<row>
+		<cmd name="ADDHPANDMP">2038</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="addHP">int32u</type><!-- 增加hp -->
+			<type name="addMP">int32u</type><!-- 增加mp -->
+		</types>
+	</row>
+	<!-- 加载地图结束 -->
+	<row>
+		<cmd name="LOADMAPCOMPLETE">2039</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- 两边都完成加载地图 -->
+	<row>
+		<cmd name="BOTHLOADMAPCOMPLETE">2040</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!--  -->
+		</types>
+	</row>
+	
+	<!-- 召唤物 -->
+	<row>
+		<cmd name="CALLMONSTER">2041</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="skillId">int32u</type><!-- 技能id -->
+			<type name="cid">int32</type><!-- 召唤物id负数 -->
+			<type name="sysId">int32u</type><!-- 怪物id -->
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="x">int32u</type>
+			<type name="y">int32u</type>
+		</types>
+	</row>
+	<!-- 召唤物位置更新  -->
+	<row>
+		<cmd name="MONSTERMOVE">2042</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="cid">int32</type><!-- 召唤物id -->
+			<type name="x">int32u</type>
+			<type name="y">int32u</type>
+		</types>
+	</row>
+	
+	<!-- 召唤物位置广播 -->
+	<row>
+		<cmd name="CALLMONSTERPOSITION">2043</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="cid">int32</type><!-- 召唤物 -->
+			<type name="sysId">int32u</type><!-- 召唤id -->
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="x">int32u</type>
+			<type name="y">int32u</type>
+		</types>
+	</row>	
+	
+	<!-- 召唤物攻击 -->
+	<row>
+		<cmd name="CALLMONSTERATTACK">2044</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="cid">int32</type><!-- 召唤物id -->
+			<type name="hid">int32u</type><!-- 攻击目标 -->
+		</types>
+	</row>
+	<!-- 召唤物死亡 -->
+	<row>
+		<cmd name="CALLMONSTERDIE">2045</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="cid">int32</type><!-- 召唤物id -->
+		</types>
+	</row>	
+	<!-- 召唤物技能 -->
+	<row>
+		<cmd name="CALLMONSTERSKILL">2046</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="cid">int32</type><!-- 召唤物id -->
+			<type name="skillId">int32u</type><!-- 技能id -->
+			<type name="hid">int32u</type><!-- 目标 -->
+		</types>
+	</row>
+	<!-- 召唤物总去x,y -->
+	<row>
+		<cmd name="CALLMOVETO">2047</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="cid">int32</type><!-- 召唤物id -->
+			<type name="x">int32u</type><!-- 目标 -->
+			<type name="y">int32u</type><!-- 目标 -->
+		</types>
+	</row>
+	<!-- 召唤物总去x,y广播 -->
+	<row>
+		<cmd name="CALLMOVETOBROADCAST">2048</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="cid">int32</type><!-- 召唤物id -->
+			<type name="x">int32u</type><!-- 目标 -->
+			<type name="y">int32u</type><!-- 目标 -->
+		</types>
+	</row>
+	<!-- 查看荣誉排行 -->
+	<row>
+		<cmd name="HONOURRANK">2049</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id-->
+		</types>
+	</row>
+	
+	<!-- 荣誉排行榜 -->
+	<row>
+		<cmd name="HONOURRANKLIST">2050</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="myRank">int8u</type><!-- 自己的排名,0表示没有上榜 -->
+			<type name="dsicount">int16u</type>
+			<iterator name="HONOURHEROLIST" count="int16u" id="2051">honourherolist</iterator>
+		</types>
+	</row>
+	<iterator>
+		<id name="HONOURHEROLIST" count="int16u" id="2051">honourherolist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="rank">int8u</type><!-- 排名 -->
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="name">stringl</type><!-- 角色名 -->
+			<type name="tid">int8u</type><!-- 徒弟id -->
+			<type name="level">int8u</type><!-- 等级 -->
+			<type name="strength">int32u</type><!-- 战斗力 -->
+			<type name="honour">int32u</type><!-- 荣誉 -->
+			<type name="vip">int8u</type><!-- 是不是vip  1 是，0不是 -->
+		</types>
+	</iterator>
+	<!-- 徒弟大战次数和倒计时 -->
+	<row>
+		<cmd name="BATTLETIMEANDTIMES">2052</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="times">int8u</type><!-- 徒弟大战次数 -->
+			<type name="time">int16u</type><!-- 倒计时时间 -->
+		</types>
+	</row>
+	
+	<!-- 购买徒弟大战次数 -->
+	<row>
+		<cmd name="BUYBATTLETIMES">2053</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!--  -->
+		</types>
+	</row>
+
+	<!-- 荣誉刷新 -->
+	<row>
+		<cmd name="HONOUR">2054</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="honour">int32u</type><!-- 荣誉 -->
+			<type name="myRank">int8u</type><!-- 自己的排名,0表示没有上榜 -->
+		</types>
+	</row>
+	
+	<!-- 进入排队 -->
+	<row>
+		<cmd name="ENTERQUEUE">2055</cmd><!-- 开始排队 -->
+		<direction>CG</direction>
+		<types>
+			<type name="moveSpeed">int32u</type><!-- 移动速度 -->
+			<type name="tid">int32u</type><!-- 徒弟id -->
+			<type name="range">int32u</type><!-- 攻击范围 -->
+			<type name="attSpeed">int32u</type><!-- 攻击速度 -->
+			<type name="hp">int32u</type><!-- 当前生命值 -->
+			<type name="att">int32u</type><!-- 攻击 -->
+			<type name="armor">int32u</type><!-- 护甲 -->
+			<type name="mp">int32u</type><!-- 当前法力值 -->
+			<type name="fali">int32u</type><!-- 法力 -->
+			<type name="skillId1">int32u</type><!-- 普通攻击-->
+			<type name="skillId2">int32u</type><!-- 技能id -->
+			<type name="skillId3">int32u</type><!-- 技能id -->
+			<type name="skillId4">int32u</type><!-- 技能id -->
+			<type name="skillId5">int32u</type><!-- 技能id -->
+		</types>
+	</row>
+	<!-- 进入排队返回结果 -->
+	<row>
+		<cmd name="ENTERQUEUERESULT">2056</cmd><!-- 开始排队 -->
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 1 成功，2失败 -->
+		</types>
+	</row>
+	<!-- 离开排队 -->
+	<row>
+		<cmd name="QUITQUEUE">2057</cmd><!--  -->
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色 -->
+		</types>
+	</row>
+	<!-- 离开排队返回结果 -->
+	<row>
+		<cmd name="QUITQUEUERESULT">2058</cmd><!-- 开始排队 -->
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 1 成功，2失败 -->
+		</types>
+	</row>
+	
+	<!-- xxxxxxxxxxxxxxxxx -->
+	<!-- 好友 -->
+	<row>
+		<cmd name="FRIENDS">3001</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type>
+		</types>
+	</row>
+	<!-- 好友信息 -->
+	<row>
+		<cmd name="FRIENDSRETURN">3002</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="discount">int16u</type>			
+			<iterator name="FRIENDLIST" count="int16u" id="3003">friendlist</iterator>
+		</types>
+	</row>
+	<iterator>
+		<id name="FRIENDLIST" count="int16u" id="3003">friendlist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+			<type name="name">stringl</type><!-- 角色名 -->
+			<type name="online">int8u</type><!-- 是否在线   1在线，0不在线 -->
+			<type name="vip">int8u</type><!-- vip 1是，0不是 -->
+		</types>
+	</iterator>
+	<!-- 添加好友 -->
+	<row>
+		<cmd name="ADDFRIEND">3004</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 对方的角色id -->
+		</types>
+	</row>
+	<!-- 添加好友返回 -->
+	<row>
+		<cmd name="ADDFRIENDRETURN">3005</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type>
+		</types>
+	</row>
+	
+	<!-- 删除好友 -->
+	<row>
+		<cmd name="DELETEFRIEND">3006</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 对方的角色id -->
+		</types>
+	</row>
+	<!-- 删除好友返会 -->
+	<row>
+		<cmd name="DELETEFRIENDRETURN">3007</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 结果，删除成功或失败 -->
+		</types>
+	</row>
+	
+	<!-- 系统公告 -->
+	<row>
+		<cmd name="SYSTERMBROADCAST">4001</cmd>	
+		<direction>GC</direction>
+		<types>
+			<type name="discount">int16u</type>
+			<iterator name="BROADCASTLIST" count="int16u" id="4002">broadcastlist</iterator>
+		</types>
+	</row>
+	<iterator>
+		<id name="BROADCASTLIST" count="int16u" id="4002">broadcastlist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="time">int32u</type><!-- 角色id -->
+			<type name="content">stringl</type><!-- 角色名 -->
+		</types>
+	</iterator>
+	<!-- 竞技场战报 -->
+	<row>
+		<cmd name="BATTLEREPORT">4003</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="discount">int16u</type>
+			<iterator name="REPORTLIST" count="int16u" id="4004">reportlist</iterator>
+			<type name="discount1">int16u</type>
+			<iterator name="ROBCOPPERLIST" count="int16u" id="4006">robcopperlist</iterator>
+		</types>
+	</row>
+	<iterator>
+		<id name="REPORTLIST" count="int16u" id="4004">reportlist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="id">int32u</type><!-- 战报id -->
+			<type name="type">int8u</type><!-- 战报类型   1竞技场，2徒弟大战-->
+			<type name="hid">int32u</type><!-- 对方角色id -->
+			<type name="name">stringl</type><!-- 对方角色名 -->
+			<type name="desId">int8u</type><!-- 描述id -->
+			<type name="tudi">int8u</type><!-- 徒弟 -->
+			<type name="strength">int32u</type><!-- 战斗力 -->
+		</types>
+	</iterator>
+	<iterator>
+		<id name="ROBCOPPERLIST" count="int16u" id="4006">robcopperlist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="robCopper">int32u</type><!--抢夺的铜币-->
+		</types>
+	</iterator>
+	<!-- 请求战报 -->
+	<row>
+		<cmd name="REQUESTREPORT">4005</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	
+	<!-- 聊天    A向B聊天      A发送5001     服务器返回5002给A 返回5003给B -->
+	<row>
+		<cmd name="CHAT">5001</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 对方角色id -->
+			<type name="content">stringl</type><!-- 聊天内容 -->
+		</types>
+	</row>
+	<row>
+		<cmd name="CHATRESULT">5002</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!--  -->
+		</types>
+	</row>
+	<row>
+		<cmd name="CHATOTHER">5003</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 对方角色id -->
+			<type name="tid">int8u</type><!-- 徒弟id -->
+			<type name="name">stringl</type><!-- 对方名字 -->
+			<type name="content">stringl</type><!-- 聊天内容 -->
+		</types>
+	</row>
+	
+	<!-- 世界聊天 -->
+	<row>
+		<cmd name="WORLDCHAT">5004</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="message">stringl</type><!-- 聊天信息 -->
+		</types>
+	</row>
+	<!-- 世界聊天信息 -->
+	<row>
+		<cmd name="WORLDCHATRETURN">5005</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 对方角色id -->
+			<type name="name">stringl</type><!-- 对方名字 -->
+			<type name="message">stringl</type><!-- 聊天信息 -->
+		</types>
+	</row>
+	<!-- 未完成交易 -->
+	<row>
+		<cmd name="undonedeal">6001</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="discount">int16u</type><!--  -->
+			<iterator name="ORDERIDLIST" count="int16u" id="6002">orderidlist</iterator>
+		</types>
+	</row>
+	<!-- 未完成的订单订单号 -->
+	<iterator>
+		<id name="ORDERIDLIST" count="int16u" id="6002">orderidlist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="orderid">stringl</type><!-- 订单号 -->
+		</types>
+	</iterator>
+	
+	<!-- 确认交易完成，求发货 -->
+	<row>
+		<cmd name="confirmdeal">6003</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="orderid">stringl</type><!-- 订单号 -->
+		</types>
+	</row>
+	
+	<!-- 活动 -->
+	<row>
+		<cmd name="openActivity">7001</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- 返会每个活动的领取状态 -->
+	<row>
+		<cmd name="activityStatus">7002</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="discount">int16u</type>
+			<iterator name="ACTIVITYLIST" count="int16u" id="7003">activitylist</iterator>
+			<type name="time">int16u</type><!-- 当天在线时长  单位分钟 -->
+			<type name="charge">int32u</type><!-- 当天累计充值 -->
+			<type name="days">int16u</type><!-- 连续登陆天数 -->
+		</types>
+	</row>
+	<!-- 发送活动信息 -->
+	<iterator>
+		<id name="ACTIVITYLIST" count="int16u" id="7003">activitylist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="actiityID">int16u</type><!-- 活动id -->
+			<type name="status">int8u</type><!-- 是否能够领取，1可以领取，0不能领取 ,2已经领取-->
+		</types>
+	</iterator>
+	
+	<!-- 领取奖励 -->
+	<row>
+		<cmd name="getAward">7004</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="id">int16u</type><!-- 活动id -->
+		</types>
+	</row>
+	
+	<!-- 领取奖励返回结果 -->
+	<row>
+		<cmd name="getAwardResult">7005</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="id">int16u</type><!-- 活动id -->
+			<type name="result">int8u</type><!-- 1 成功，2失败 -->
+		</types>
+	</row>
+	
+	<!-- 波数排行榜 -->
+	<row>
+		<cmd name="waveRank">7006</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- type int16,int32,stringl,int8,Arrayint16,Arrayint32，Arraystringl,Arrayint8 -->
+	<row>
+		<cmd name="waveRankResult">7007</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="rankslength">int16u</type><!-- 数组长度 -->
+			<type name="ranks">Arrayint8</type><!-- 排名 -->
+			<type name="hidslength">int16u</type><!-- 数组长度 -->
+			<type name="hids">Arrayint32</type><!-- 角色id -->
+			<type name="nameslength">int16u</type><!-- 数组长度 -->
+			<type name="names">Arraystringl</type><!-- 角色名字 -->
+			<type name="waveslength">int16u</type><!-- 数组长度 -->
+			<type name="waves">Arrayint16</type><!-- 波数 -->
+			<type name="tidslength">int16u</type><!-- 数组长度 -->
+			<type name="tids">Arrayint8</type><!-- 徒弟id -->
+			<type name="vipslength">int16u</type><!-- 数组长度 -->
+			<type name="vips">Arrayint8</type><!-- vip 1是，0不是 -->
+		</types>
+	</row>
+	
+	<!-- 战斗力排行 -->
+	<row>
+		<cmd name="strengthRank">7008</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- type int16,int32,stringl,int8,Arrayint16,Arrayint32，Arraystringl,Arrayint8 -->
+	<row>
+		<cmd name="strengthRankResult">7009</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="rankslength">int16u</type><!-- 数组长度 -->
+			<type name="ranks">Arrayint8</type><!-- 排名 -->
+			<type name="hidslength">int16u</type><!-- 数组长度 -->
+			<type name="hids">Arrayint32</type><!-- 角色id -->
+			<type name="nameslength">int16u</type><!-- 数组长度 -->
+			<type name="names">Arraystringl</type><!-- 角色名字 -->
+			<type name="strengthlength">int16u</type><!-- 数组长度 -->
+			<type name="strength">Arrayint16</type><!-- 战斗力数组 -->
+			<type name="tidslength">int16u</type><!-- 数组长度 -->
+			<type name="tids">Arrayint8</type><!-- 徒弟id -->
+			<type name="vipslength">int16u</type><!-- 数组长度 -->
+			<type name="vips">Arrayint8</type><!-- vip   1是，0不是 -->			
+		</types>
+	</row>
+	
+	<!-- 抢夺榜 -->
+	<row>
+		<cmd name="robRank">7010</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<row>
+		<cmd name="robRankResult">7011</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="rankslength">int16u</type><!-- 数组长度 -->
+			<type name="ranks">Arrayint8</type><!-- 排名 -->
+			<type name="hidslength">int16u</type><!-- 数组长度 -->
+			<type name="hids">Arrayint32</type><!-- 角色id -->
+			<type name="nameslength">int16u</type><!-- 数组长度 -->
+			<type name="names">Arraystringl</type><!-- 角色名字 -->
+			<type name="copperslength">int16u</type><!-- 数组长度 -->
+			<type name="coppers">Arrayint32</type><!-- 抢夺铜币数量 -->
+			<type name="tidslength">int16u</type><!-- 数组长度 -->
+			<type name="tids">Arrayint8</type><!-- 徒弟id -->
+			<type name="vipslength">int16u</type><!-- 数组长度 -->
+			<type name="vips">Arrayint8</type><!-- vip   1是，0不是 -->	
+		</types>
+	</row>
+	
+	<!-- 请求 vip 时间  -->
+	<row>
+		<cmd name="getvip">7012</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- 请求 vip 时间 返回 -->
+	<row>
+		<cmd name="getvipResult">7013</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="days">int8u</type><!-- vip剩余天数-->
+			<type name="status">int8u</type><!-- 状态，1 可以领取，0不能领取 -->
+		</types>
+	</row>
+	<!-- 领取vip每日元宝  -->
+	<row>
+		<cmd name="getvipMoney">7014</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- 领取vip每日元宝 返回结果 -->
+	<row>
+		<cmd name="getvipMoneyResult">7015</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 1成功，0失败 -->
+		</types>
+	</row>
+	
+	
+	<!-- 背包协议 -->
+	<row>
+		<cmd name="BAGMESSAGE">8001</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="size">int8u</type><!-- 背包格子总数 -->
+			<type name="discount">int16u</type><!--数组长度-->
+			<iterator name="GRIDLIST" count="int16u" id="8006">gridlist</iterator>
+		</types>
+	</row>
+	<!--  -->
+	<iterator>
+		<id name="GRIDLIST" count="int16u" id="8006">gridlist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="toolId">int32u</type><!-- 道具id， -->
+			<type name="num">int8u</type><!-- 道具数亮 -->
+		</types>
+	</iterator>
+	
+	<!-- 购买道具 -->
+	<row>
+		<cmd name="BUYTOOLS">8002</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="shopId">int8u</type><!-- 商店商品id -->
+		</types>
+	</row>
+	<!-- 购买道具返回结果 -->
+	<row>
+		<cmd name="BUYTOOLSRESULT">8003</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 1成功购买，2购买失败 -->
+		</types>
+	</row>
+	<!-- 使用道具 -->
+	<row>
+		<cmd name="USETOOL">8004</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="toolId">int32u</type><!-- 道具id -->
+			<type name="num">int8u</type><!-- 使用数量 -->
+		</types>
+	</row>
+	<!-- 使用道具返回结果 -->
+	<row>
+		<cmd name="USETOOLRESULT">8005</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 1成功使用，2使用失败 -->
+			<type name="toolId">int32u</type><!-- 道具id -->
+		</types>
+	</row>
+	<!-- 获取修炼剩余时间 -->
+	<row>
+		<cmd name="GETPRACTICE">8006</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- 返回修炼剩余时间 -->
+	<row>
+		<cmd name="PRACTICE">8007</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="time">int32u</type><!-- 剩余时间 -->
+			<type name="exp">int32u</type><!-- 所得经验 -->
+		</types>
+	</row>
+	
+	<!-- 获取修炼经验 -->
+	<row>
+		<cmd name="GETEXP">8008</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id -->
+		</types>
+	</row>
+	<!-- 获取修炼经验返回结果 -->
+	<row>
+		<cmd name="GETEXPRESULT">8009</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 1成功，2失败 -->
+		</types>
+	</row>
+	<!-- 任务信息 -->
+	<row>
+		<cmd name="TASKMESSAGE">8010</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="discount">int16u</type><!-- 数组长度 -->
+			<iterator name="TASKLIST" count="int16u" id="8011">tasklist</iterator>
+		</types>
+	</row>
+	<iterator>
+		<id name="TASKLIST" count="int16u" id="8011">tasklist</id>
+		<direction>GC</direction>
+		<types>
+			<type name="taskId">int32u</type><!-- 任务id， -->
+			<type name="query">int8u</type><!-- 达成条件次数 -->
+			<type name="times">int8u</type><!-- 达成次数-->
+			<type name="status">int8u</type><!-- 能否领取 ，1未达条件 ，0可以领取，2 已经领取 -->
+		</types>
+	</iterator>
+	
+	<!-- 强化装备 -->
+	<row>
+		<cmd name="EQUIP">8012</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id-->
+		</types>
+	</row>
+	<!-- 领取奖励 -->
+	<row>
+		<cmd name="GETTASKAWARD">8013</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="taskId">int32u</type><!-- 任务id-->
+		</types>
+	</row>
+	<!-- 获取任务信息 -->
+	<row>
+		<cmd name="GETTASKMESSAGE">8014</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id-->
+		</types>
+	</row>
+	
+	<!-- 请求摇钱树被抢记录 -->
+	<row>
+		<cmd name="ROBCOPPER">8015</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="hid">int32u</type><!-- 角色id-->
+		</types>
+	</row>
+	<!-- 请求摇钱树被抢记录 -->
+	<row>
+		<cmd name="ROBCOPPERRESULT">8016</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="discount">int16u</type>
+			<type name="message">Arraystringl</type><!-- 角色名字 -->
+		</types>
+	</row>
+	<!-- 道具变化 -->
+	<row>
+		<cmd name="TOOLNUMCHANGE">8017</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="leixing">int8u</type><!-- 类型 1：增加  ， 2：减少 -->
+			<type name="discount">int16u</type>
+			<type name="toolIds">Arrayint32</type><!-- 道具id -->
+			<type name="discount1">int16u</type>
+			<type name="nums">Arrayint8</type><!-- 道具数量 -->
+		</types>
+	</row>
+	
+	<!-- 怪物掉落 -->
+	<row>
+		<cmd name="MONSTERLOOT">8018</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="mapId">int16u</type><!-- 地图id -->
+			<type name="difficulty">int8u</type><!-- 难度    1简单，2普通，3困难 -->
+		</types>
+	</row>
+	<!-- 购买铜币 -->
+	<row>
+		<cmd name="BUYCOPPER">8019</cmd>
+		<direction>CG</direction>
+		<types>
+			<type name="shopId">int8u</type><!-- 商品id -->
+		</types>
+	</row>
+	<!-- 购买铜币返回结果 -->
+	<row>
+		<cmd name="BUYCOPPERRESULT">8020</cmd>
+		<direction>GC</direction>
+		<types>
+			<type name="result">int8u</type><!-- 1成功，2失败 -->
+		</types>
+	</row>
+	
+</protocol>

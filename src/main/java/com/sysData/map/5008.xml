@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="16" height="12" tilewidth="80" tileheight="80">
+ <tileset firstgid="1" name="5008" tilewidth="80" tileheight="80">
+  <image source="5008.jpg" width="1280" height="960"/>
+ </tileset>
+ <layer name="块层 1" width="16" height="12">
+  <data encoding="base64" compression="zlib">
+   eJwNwwdXDgAAAMCvISnJloySmZmGmbbsnb1nViojK6uyMhsiFFGyIytCfpq79y4oEAgEG2KovQyzt+H2McJI+xplP6Pt7wAHOsjBDnGow4xxuLGOcKSjHG2c8Y4xwbGOc7wTnOgkE53sFKc6zenOMMmZJptiqmnOcrZznOs855vuAjPMNMtsc8w1z4Xmu8jFLnGpy1zuCle6ytWuca3rLHC9G9zoJje7xa1uc7s73Okud7vHve5zvwcs9KCHPOwRj1rkMYstsdTjnvCkpyzztGc86znPW+4FL3rJy16xwkqrvOo1r3vDm1Z7y9ve8a73vG+NtdZZ7wMbfOgjG33sE5/aZLPPfG6LL3xpq22+st3XvvGt73zvBz/a4Sc/2+kXv/rN7/6wy5/+stvf/vGvPf7zPyhHSGE=
+  </data>
+ </layer>
+ <objectgroup name="object" width="16" height="12">
+  <properties>
+   <property name="anim" value="5008_1_000|4*0.3"/>
+   <property name="zhedangwu" value="5008_1_|1,5008_2_|1,5008_3_|1,5008_4_|1,5008_5_|1,5008_6_|1,5008_7_|1"/>
+  </properties>
+  <object name="obstacle" x="0" y="0" width="80" height="960"/>
+  <object name="obstacle" x="80" y="880" width="1200" height="80"/>
+  <object name="obstacle" x="1200" y="720" width="80" height="160"/>
+  <object name="obstacle" x="1200" y="0" width="80" height="640"/>
+  <object name="obstacle" x="800" y="0" width="400" height="80"/>
+  <object name="obstacle" x="80" y="0" width="720" height="80"/>
+  <object name="obstacle" x="640" y="240" width="80" height="80"/>
+  <object name="obstacle" x="800" y="240" width="80" height="80"/>
+  <object name="obstacle" x="960" y="400" width="80" height="80"/>
+  <object name="obstacle" x="880" y="800" width="80" height="80"/>
+  <object name="obstacle" x="640" y="640" width="160" height="80"/>
+  <object name="obstacle" x="320" y="480" width="80" height="80"/>
+  <object name="obstacle" x="80" y="320" width="80" height="80"/>
+  <object name="obstacle" x="80" y="800" width="160" height="80"/>
+  <object name="enemy" x="160" y="240" width="80" height="80">
+   <properties>
+    <property name="SearchR" value="4"/>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+  <object name="hero" x="1040" y="640" width="80" height="80">
+   <properties>
+    <property name="dir" value="2"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="road" x="1200" y="640" width="80" height="80">
+   <properties>
+    <property name="dir" value="6"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="road" x="1120" y="640" width="80" height="80">
+   <properties>
+    <property name="dir" value="6"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="enemy" x="1280" y="640" width="80" height="80">
+   <properties>
+    <property name="dir" value="6"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="enemy" x="720" y="0" width="80" height="80">
+   <properties>
+    <property name="chufadian" value="3"/>
+    <property name="id" value="3"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="560" y="480" width="80" height="80">
+   <properties>
+    <property name="id" value="3"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="720" y="320" width="80" height="80">
+   <properties>
+    <property name="id" value="3"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="640" y="400" width="80" height="80">
+   <properties>
+    <property name="id" value="3"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="480" y="560" width="80" height="80">
+   <properties>
+    <property name="id" value="3"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="560" y="720" width="80" height="80">
+   <properties>
+    <property name="id" value="3"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="bornplace" width="16" height="12">
+  <object name="bornplace" x="960" y="480" width="80" height="80"/>
+  <object name="bornplace" x="480" y="480" width="80" height="80"/>
+ </objectgroup>
+</map>

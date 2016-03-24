@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="16" height="14" tilewidth="80" tileheight="80">
+ <tileset firstgid="1" name="5006" tilewidth="80" tileheight="80">
+  <image source="5009.jpg" width="1280" height="1120"/>
+ </tileset>
+ <tileset firstgid="225" name="5009" tilewidth="80" tileheight="80">
+  <image source="5009.jpg" width="1280" height="1120"/>
+ </tileset>
+ <layer name="块层 1" width="16" height="14">
+  <data encoding="base64" compression="zlib">
+   eJwNwwV3DgAAAMBP95iOMTE13TE1bCxMm+7OaTNMd4zp7u5u/gqma9gwuXvv7lkgEHjuCzN86Stf+8a3vvO9H/zoJz+b6Re/+s0ss/3uD3+a4y9/+8e//vO/gTyY13zmt4AFLWRhi1jUYha3hEGWtJTBlraMZS1neStY0UpWtoohVrWaoVa3hjWtZZi1rWNd61nfcBvY0EY2tolNbWZzW9jSVra2jW1tZ3sj7GBHO9nZLkba1W52N8poe9jTGGONM95eJtjbPva1n/0d4EAHmehghzjUYQ53hCMd5WjHONZxjneCE53kZKc41WlOd4YznWWSs53jXOc53wUudJHJLjbFJS51makud4UrXeVq17jWda53gxvd5Ga3uNVtprndHaa7013udo973ed+D3jQQx72iEc95nFPeNJTnvaMZz3neS940Ute9opXveZ1b3jTW972jne9530f+NBHPvaJT80FE6pmMg==
+  </data>
+ </layer>
+ <objectgroup name="object" width="16" height="14">
+  <properties>
+   <property name="zhedangwu" value="5009_1_|1"/>
+  </properties>
+  <object name="obstacle" x="0" y="0" width="80" height="1120"/>
+  <object name="obstacle" x="80" y="1040" width="1200" height="80"/>
+  <object name="obstacle" x="1200" y="0" width="80" height="1040"/>
+  <object name="obstacle" x="80" y="0" width="160" height="80"/>
+  <object name="obstacle" x="320" y="0" width="880" height="80"/>
+  <object name="obstacle" x="800" y="880" width="80" height="80"/>
+  <object name="obstacle" x="640" y="960" width="80" height="80"/>
+  <object name="obstacle" x="320" y="560" width="320" height="80"/>
+  <object name="obstacle" x="320" y="720" width="480" height="80"/>
+  <object name="obstacle" x="640" y="240" width="80" height="80"/>
+  <object name="obstacle" x="960" y="320" width="240" height="240"/>
+  <object name="obstacle" x="1120" y="560" width="80" height="80"/>
+  <object name="obstacle" x="80" y="720" width="80" height="80"/>
+  <object name="obstacle" x="400" y="80" width="320" height="80"/>
+  <object name="enemy" x="240" y="-80" width="80" height="80">
+   <properties>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="hero" x="240" y="160" width="80" height="80">
+   <properties>
+    <property name="dir" value="1"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="road" x="240" y="0" width="80" height="80">
+   <properties>
+    <property name="dir" value="2"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="road" x="240" y="80" width="80" height="80">
+   <properties>
+    <property name="dir" value="2"/>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="enemy" x="480" y="800" width="80" height="80">
+   <properties>
+    <property name="SearchR" value="4"/>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+  <object name="obstacle" x="400" y="320" width="80" height="80"/>
+  <object name="enemy" x="400" y="320" width="80" height="80">
+   <properties>
+    <property name="chufadian" value="0"/>
+    <property name="id" value="1"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="560" y="320" width="80" height="80">
+   <properties>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="480" y="480" width="80" height="80">
+   <properties>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="400" y="400" width="80" height="80">
+   <properties>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object name="obstacle" x="960" y="720" width="80" height="80"/>
+  <object name="enemy" x="960" y="720" width="80" height="80">
+   <properties>
+    <property name="chufadian" value="2"/>
+    <property name="id" value="3"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="800" y="560" width="80" height="80">
+   <properties>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="720" y="640" width="80" height="80">
+   <properties>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="880" y="480" width="80" height="80">
+   <properties>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+  <object name="chufadian" x="240" y="560" width="80" height="80">
+   <properties>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="bornplace" width="16" height="14">
+  <object name="bornplace" x="240" y="640" width="80" height="80"/>
+  <object name="bornplace" x="720" y="640" width="80" height="80"/>
+ </objectgroup>
+</map>

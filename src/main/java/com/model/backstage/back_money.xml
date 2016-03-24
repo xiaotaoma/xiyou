@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Back_money">
+	<typeAlias alias="Back_money" type="com.model.backstage.Back_money"/>
+	<insert id="insert" parameterClass="Back_money">
+		insert into back_money (type,num,reason,time) values (#type#,#num#,#reason#,#time#)
+	</insert>
+</sqlMap>
